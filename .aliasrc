@@ -1,0 +1,80 @@
+# Making tmux pick up colours
+alias tmux="tmux -2"
+
+# To touch with fanciness
+alias t="touch"
+
+# Making bat the default cat
+alias cat='bat'
+
+# Making life bearable
+alias src="source ~/.bash_profile"
+
+# Making watch pretty
+alias watch="watch -n 5 -d --color"
+
+# Setting preview thing with fzf
+alias preview="fzf --preview 'bat --color always {}'"
+
+# Making man more pretty
+alias man="man -P 'bat --color always'"
+
+# Making ack more pretty
+alias ack="ack --pager='bat --color always' --colour"
+
+# Making ls pretty
+alias ls='ls -GFh'
+
+# Make use of exa
+alias exa='exa --color always --group-directories-first'
+
+# Being clever when using exa
+alias l='exa --color always --group-directories-first -T -L 1 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
+alias ll='exa --color always --group-directories-first -T -L 2 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
+alias lll='exa --color always --group-directories-first -T -L 3 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
+alias llll='exa --color always --group-directories-first -T -L 4 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
+# Alternative
+alias l2='exa --color always --group-directories-first -T -L 2 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
+alias l3='exa --color always --group-directories-first -T -L 3 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
+alias l4='exa --color always --group-directories-first -T -L 4 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
+alias l5='exa --color always --group-directories-first -T -L 5 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
+alias l6='exa --color always --group-directories-first -T -L 6 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
+alias l7='exa --color always --group-directories-first -T -L 7 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
+alias l8='exa --color always --group-directories-first -T -L 8 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
+alias l9='exa --color always --group-directories-first -T -L 9 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
+
+# Showing everything
+alias la='exa --color always --group-directories-first -T -L 1 -l --git -a'
+alias lla='exa --color always --group-directories-first -T -L 2 -l --git -a'
+alias llla='exa --color always --group-directories-first -T -L 3 -l --git -a'
+alias lllla='exa --color always --group-directories-first -T -L 4 -l --git -a'
+# Showing everything; alternative
+alias l2a='exa --color always --group-directories-first -T -L 2 -l --git -a'
+alias l3a='exa --color always --group-directories-first -T -L 3 -l --git -a'
+alias l4a='exa --color always --group-directories-first -T -L 4 -l --git -a'
+
+# https://www.thegeekstuff.com/2008/10/6-awesome-linux-cd-command-hacks-productivity-tip3-for-geeks/
+
+# Being extra clever to navigate up the directories
+alias ..="cd .."
+alias ..2="cd ../.."
+alias ..3="cd ../../.."
+alias ..4="cd ../../../.."
+alias ..5="cd ../../../../.."
+
+# Make git awesome
+alias gs="git status"
+alias gd="git diff"
+alias gp="git pull"
+
+# Making git super cool
+alias master="git checkout master"
+
+# To get some nice python development
+[ -f ~/.vimrc_python ] && alias vimpython="vim -u ~/.vimrc_python"
+
+# To get some nice go development
+[ -f ~/.vimrc_go ] && alias vimgo="vim -u ~/.vimrc_go"
+
+# To get some nice javascript development
+[ -f ~/.vimrc_js ] && alias vimjs="vim -u ~/.vimrc_js"
