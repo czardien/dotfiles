@@ -30,10 +30,10 @@ export TERM=screen-256color
 # For all things LaTeX
 [ -f ~/.bash_tex ] && source ~/.bash_tex
 
-# For all things LaTeX
+# For all aliases
 [ -f ~/.aliasrc ] && source ~/.aliasrc
 
-# For all things LaTeX
+# For all functions
 [ -f ~/.bashfuncs ] && source ~/.bashfuncs
 
 # Profiling bash startup (comment)
