@@ -30,6 +30,12 @@ export TERM=screen-256color
 # For all things LaTeX
 [ -f ~/.bash_tex ] && source ~/.bash_tex
 
+# For all things LaTeX
+[ -f ~/.aliasrc ] && source ~/.aliasrc
+
+# For all things LaTeX
+[ -f ~/.bashfuncs ] && source ~/.bashfuncs
+
 # Profiling bash startup (comment)
 # If you startup a new Bash session manually (i.e. bash -xl), you can see what is run on login.
 #PS4='+ $(date "+%s.%N")\011 '
