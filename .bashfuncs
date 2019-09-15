@@ -1,0 +1,7 @@
+# supports git type urls, opens with firefox
+gitrepo () {
+  local git_url
+  git_url=https://$(git remote get-url origin | tr ':' '/' | tr '\@' ' ' | tr '.' ' ' | awk '{printf "%s.%s", $2, $3}')
+
+  firefox $git_url
+}
