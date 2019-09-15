@@ -36,7 +36,10 @@ set guifont=Source\ Code\ Pro\ for\ Powerline
 " Vundle thing; turning filetype off is necessary, we however turn it on again
 filetype off
 
-set rtp+=/Users/adrien/.vim/bundle/Vundle.vim
+" Do not use ~ rtp might not expand automatically
+set rtp+=/home/adrien/.vim/bundle/Vundle.vim
+
+
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'

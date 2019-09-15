@@ -52,6 +52,8 @@ alias lllla='exa --color always --group-directories-first -T -L 4 -l --git -a'
 alias l2a='exa --color always --group-directories-first -T -L 2 -l --git -a'
 alias l3a='exa --color always --group-directories-first -T -L 3 -l --git -a'
 alias l4a='exa --color always --group-directories-first -T -L 4 -l --git -a'
+alias l5a='exa --color always --group-directories-first -T -L 4 -l --git -a'
+alias l6a='exa --color always --group-directories-first -T -L 4 -l --git -a'
 
 # https://www.thegeekstuff.com/2008/10/6-awesome-linux-cd-command-hacks-productivity-tip3-for-geeks/
 
