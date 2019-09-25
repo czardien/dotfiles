@@ -1,0 +1,11 @@
+" Plugins
+source ~/.vimrcplugs
+
+" Sets, lets, autocmds, nmaps, nnoremaps
+source ~/.vimrccmds
+
+" Airline configuration
+source ~/.vimrcline
+
+" Sierra color scheme
+source ~/.vimrccolor

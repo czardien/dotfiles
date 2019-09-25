@@ -1,0 +1,51 @@
+" Encoding business
+set encoding=utf-8
+
+" Display line number
+set nu
+
+" Make the new window appear below the current window
+set splitbelow
+" Make the new window appear on the right
+set splitright
+
+" Ensures all Swap files end up in the same place; we don't pollute our
+" projects
+set backupdir=~/.vim/backup/
+set directory=~/.vim/backup/
+
+" For folding
+set foldmethod=indent
+set foldlevel=99
+
+" To make use of the system clipboard
+set clipboard=unnamed
+
+" To get a nice backspace key that deletes over line breaks and indents
+set backspace=indent,eol,start
+
+" Making search prettier
+set hlsearch
+
+" Make sure to escape the spaces in the name properly
+set guifont=Source\ Code\ Pro\ for\ Powerline
+
+" Automatic triming of trailing whitespaces
+autocmd BufWritePre * %s/\s\+$//e
+
+" Leader key
+let mapleader=" "
+
+" Redo action (instead of Ctrl-r)
+nnoremap U <C-R>
+
+" Make use of awesome fzf
+nnoremap <C-p> :Files<Cr>
+nnoremap <C-b> :Buffers<Cr>
+
+" To disable search highlight using CTRL + o
+nnoremap <c-o> <c-o>:noh<cr>
+
+" For making enter inserting a newline
+nmap <S-Enter> O<Esc>
+nmap <CR> o<Esc>
