@@ -4,7 +4,7 @@ set nocompatible
 " Vundle; turning filetype off is necessary, we however turn it on again
 filetype off
 
-set rtp+=/usr/share/vim/vimfiles/autoload/vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " Vundle
 Plugin 'gmarik/Vundle.vim'

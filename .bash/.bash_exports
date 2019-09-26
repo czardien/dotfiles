@@ -4,6 +4,8 @@ export PATH=$PATH:$GOPATH/bin
 
 # Opening with vim from fzf
 export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(vim {})+abort'"
+
+# Using ag to search (The Silver Searcher) and showing hidden files
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
 # If needed, set a pretty prompt PS1
