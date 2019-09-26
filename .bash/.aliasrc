@@ -8,7 +8,7 @@ alias t="touch"
 alias cat='bat'
 
 # Making life bearable
-alias src="source ~/.bash_profile"
+alias src="source ~/.bashrc"
 
 # Making watch pretty
 alias watch="watch -n 5 -d --color"
@@ -73,10 +73,10 @@ alias gp="git pull"
 alias master="git checkout master"
 
 # To get some nice python development
-[ -f ~/.vimrc_python ] && alias vimpython="vim -u ~/.vimrc_python"
+[ -f ~/dotfiles/.vim/.vimrcpy ] && alias vimpython="vim -u ~/dotfiles/.vim/.vimrcpy"
 
 # To get some nice go development
-[ -f ~/.vimrc_go ] && alias vimgo="vim -u ~/.vimrc_go"
+[ -f ~/dotfiles/.vim/.vimrcgo ] && alias vimgo="vim -u ~/dotfiles/.vim/.vimrcgo"
 
 # To get some nice javascript development
-[ -f ~/.vimrc_js ] && alias vimjs="vim -u ~/.vimrc_js"
+[ -f ~/dotfiles/.vim/.vimrcjs ] && alias vimjs="vim -u ~/dotfiles/.vim/.vimrcjs"

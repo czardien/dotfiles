@@ -49,3 +49,7 @@ nnoremap <c-o> <c-o>:noh<cr>
 " For making enter inserting a newline
 nmap <S-Enter> O<Esc>
 nmap <CR> o<Esc>
+
+" If Lightline is activated we don't need to see the double 'INSERT' at the
+" bottom
+set noshowmode

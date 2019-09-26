@@ -1,0 +1,26 @@
+# To use go
+export GOPATH=~/go
+export PATH=$PATH:$GOPATH/bin
+
+# Opening with vim from fzf
+export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(vim {})+abort'"
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+
+# If needed, set a pretty prompt PS1
+export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+
+# Making ls pretty
+export CLICOLOR=1
+export LSCOLORS=ExFxBxDxCxegedabagacad
+
+# Setting term to 256 colours
+export TERM=screen-256color
+
+# From https://github.com/junegunn/fzf#respecting-gitignore
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# Profiling bash startup (comment)
+# If you startup a new Bash session manually (i.e. bash -xl), you can see what is run on login.
+#PS4='+ $(date "+%s.%N")\011 '
+#set +x
+#exec 2>&3 3>&-
