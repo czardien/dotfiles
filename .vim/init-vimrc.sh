@@ -1,4 +1,4 @@
 #!/bin/sh
 
-ln -sf ~/.vimrczero ~/.vimrc
-ln -sf ~/.vimrccolor_deus ~/.vimrccolor
+ln -sf ~/dotfiles/.vim/.vimrczero ~/.vimrc
+ln -sf ~/dotfiles/.vim/.vimrccolor_deus ~/.vimrccolor
