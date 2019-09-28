@@ -13,6 +13,9 @@
 # For all functions
 [ -f ~/dotfiles/.bash/.bash_funcs ] && source ~/dotfiles/.bash/.bash_funcs
 
+# For tiny python virtual environment business
+[ -f ~/dotfiles/.bash/.pythonrc ] && source ~/dotfiles/.bash/.pythonrc
+
 # Profiling bash startup (comment)
 # If you startup a new Bash session manually (i.e. bash -xl), you can see what is run on login.
 #PS4='+ $(date "+%s.%N")\011 '
