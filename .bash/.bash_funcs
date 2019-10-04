@@ -1,7 +1,27 @@
 # supports git type urls, opens with firefox
-gitrepo () {
+gr () {
   local git_url
-  git_url=https://$(git remote get-url origin | tr ':' '/' | tr '\@' ' ' | tr '.' ' ' | awk '{printf "%s.%s", $2, $3}')
+  [ -d .git ] || echo "Not a git directory"
+  [ -d .git ] || return 1
+  git_url=https://$(git remote get-url origin | sed 's/\.git//g' | sed 's/git\@//g' | tr ':' '/')
+  prgr=firefox
+  [ -n $(which python3) ] && prgr="python3 -m webbrowser"
+  $prgr $git_url
+}
 
-  firefox $git_url
+# Goes over the given directory and looks for modifications in git repositories
+ggotobed () {
+  local path allrepos repo proj changes controller
+  path=$1
+  [ -n "$1" ] || path="."
+  allrepos=$(fd --hidden --type d ".git" $path)
+  controller=true
+  for repo in $allrepos
+  do
+    proj=$(dirname "$repo")
+    changes=$(cd "$proj" && git status --porcelain)
+    [ -n "$changes" ] && echo "[ X ][ $(echo "$path/$proj" | tr -s '//' '/') ]"
+    [ -n "$changes" ] && controller=false
+  done
+  [ "$controller" = "true" ] && echo "[ V ] Go to bed!"
 }
