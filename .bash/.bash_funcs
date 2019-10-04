@@ -2,6 +2,19 @@
 gitrepo () {
   local git_url
   git_url=https://$(git remote get-url origin | tr ':' '/' | tr '\@' ' ' | tr '.' ' ' | awk '{printf "%s.%s", $2, $3}')
-
   firefox $git_url
+}
+
+# Goes over the given directory and looks for modifications in git repositories
+gitfetchallchanges () {
+  local path allrepos repo proj changes
+  path=$1
+  [ -n "$1" ] || path="."
+  allrepos=$(fd --hidden --type d ".git" $path)
+  for repo in $allrepos
+  do
+    proj=$(dirname "$repo")
+    changes=$(cd "$proj" && git status --porcelain)
+    [ -n "$changes" ] && echo "[ X ][ $(echo "$path/$proj" | tr -s '//' '/') ]"
+  done
 }
