@@ -11,14 +11,17 @@ gr () {
 
 # Goes over the given directory and looks for modifications in git repositories
 ggotobed () {
-  local path allrepos repo proj changes
+  local path allrepos repo proj changes controller
   path=$1
   [ -n "$1" ] || path="."
   allrepos=$(fd --hidden --type d ".git" $path)
+  controller=true
   for repo in $allrepos
   do
     proj=$(dirname "$repo")
     changes=$(cd "$proj" && git status --porcelain)
     [ -n "$changes" ] && echo "[ X ][ $(echo "$path/$proj" | tr -s '//' '/') ]"
+    [ -n "$changes" ] && controller=false
   done
+  [ "$controller" = "true" ] && echo "[ V ] Go to bed!"
 }
