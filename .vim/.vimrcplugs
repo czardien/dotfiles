@@ -51,7 +51,8 @@ Plug 'mattn/emmet-vim'
 " Polyglot thing :scream: https://freshman.tech/vim-javascript/
 Plug 'sheerun/vim-polyglot'
 " Color schemes
-" Deus
 Plug 'ajmwagar/vim-deus'
+Plug 'noahfrederick/vim-noctu'
+Plug 'chriskempson/vim-tomorrow-theme'
 call plug#end()
 execute pathogen#infect()
