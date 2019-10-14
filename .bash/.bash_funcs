@@ -6,7 +6,7 @@ gr () {
   git_url=https://$(git remote get-url origin | sed 's/\.git//g' | sed 's/git\@//g' | tr ':' '/')
   prgr=firefox
   [ -n $(which python3) ] && prgr="python3 -m webbrowser"
-  $prgr $git_url
+  $prgr $git_url &> /dev/null
 }
 
 # Goes over the given directory and looks for modifications in git repositories

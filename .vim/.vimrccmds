@@ -36,6 +36,34 @@ autocmd BufWritePre * %s/\s\+$//e
 " Leader key
 let mapleader=" "
 
+" Make it less distracting
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
+
+" Keep the sign gutter open
+let g:ale_sign_column_always = 1
+
+" Only enabling Ale on python files for now
+" https://github.com/dense-analysis/ale/issues/371#issuecomment-304313091
+let g:ale_pattern_options = {
+\   '.*\.py$': {'ale_enabled': 1},
+\   '.*': {'ale_enabled': 0},
+\}
+let g:ale_pattern_options_enabled = 1
+
+" use python language server
+let g:ale_linters = {'python': ['pyls']}
+let g:ale_python_pyls_config = {'pyls': {'configurationSources': ['flake8']}}
+
+" Enable completion
+let g:ale_completion_enabled = 1
+
+" Set maximum number of suggestions
+let g:ale_completion_max_suggestions = 1
+
+" Hammer the LS
+let g:ale_completion_delay = 0
+
 " Redo action (instead of Ctrl-r)
 nnoremap U <C-R>
 
