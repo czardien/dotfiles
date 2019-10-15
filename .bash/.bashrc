@@ -1,6 +1,9 @@
 # For all exports
 [ -f ~/dotfiles/.bash/.bash_exports ] && source ~/dotfiles/.bash/.bash_exports
 
+# For locales if needed, needed to hack it quickly
+[ -f ~/dotfiles/.bash/.bashlocales ] && source ~/dotfiles/.bash/.bashlocales
+
 # For fzf key bindings
 [ -f ~/dotfiles/.bash/.bash_fzf ] && source ~/dotfiles/.bash/.bash_fzf
 
