@@ -16,7 +16,6 @@ Plugin 'mileszs/ack.vim'
 Plugin 'itchyny/vim-gitbranch'
 " Use LightLine
 Plugin 'itchyny/lightline.vim'
-Plugin 'chriskempson/vim-tomorrow-theme'
 call vundle#end()
 filetype plugin indent on
 filetype plugin on

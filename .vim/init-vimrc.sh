@@ -1,4 +1,4 @@
 #!/bin/sh
 
+mkdir -p ~/.vim/backup
 ln -sf ~/dotfiles/.vim/.vimrczero ~/.vimrc
-ln -sf ~/dotfiles/.vim/.vimrccolor_tomorrow_night ~/.vimrccolor
