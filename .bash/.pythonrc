@@ -1,11 +1,14 @@
-PYVENVS=~/python/venvs/
+PYVENVS=~/.venvs
 
 # Just needs a python3 installation
 pyvenv () {
   local name
   name=$1
 
-  python3 -m venv ~/python/venvs/$name && \
+  [ -d $PYVENVS/$name ] && echo "Virtual environment '$name' already exists at: $PYVENVS/$name" && return 1
+
+  mkdir -p $PYVENVS && \
+  python3 -m venv $PYVENVS/$name && \
   echo -e "alias activate-$name='source $PYVENVS/$name/bin/activate'" >> $PYVENVS/.aliasrc
 }
 
