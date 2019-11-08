@@ -8,26 +8,14 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " Vundle
 Plugin 'gmarik/Vundle.vim'
-" Makes sure the folding is seamless
-Plugin 'tmhedberg/SimpylFold'
-" Zenburn Color scheme
-Plugin 'jnurmine/Zenburn'
-" For some nice NERDTree action
-Plugin 'scrooloose/nerdtree'
 " For Git integration
 Plugin 'tpope/vim-fugitive'
 " To integrate my favourite searching tool
 Plugin 'mileszs/ack.vim'
-" To automatically generate Table of Contents in Markdown files
-Plugin 'mzlogin/vim-markdown-toc'
 " To display git branch
 Plugin 'itchyny/vim-gitbranch'
 " Use LightLine
 Plugin 'itchyny/lightline.vim'
-Plugin 'ajmwagar/lightline-deus'
-" Color schemes
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'alessandroyorba/sierra'
 call vundle#end()
 filetype plugin indent on
 filetype plugin on
@@ -39,20 +27,5 @@ call plug#begin()
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
-" Go things https://github.com/fatih/vim-go-tutorial
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-Plug 'AndrewRadev/splitjoin.vim'
-Plug 'fatih/molokai'
-" Javascript things https://github.com/pangloss/vim-javascript
-Plug 'pangloss/vim-javascript'
-" HTML Things
-" https://medium.com/vim-drops/be-a-html-ninja-with-emmet-for-vim-feee15447ef1
-Plug 'mattn/emmet-vim'
-" Polyglot thing :scream: https://freshman.tech/vim-javascript/
-Plug 'sheerun/vim-polyglot'
-" Color schemes
-Plug 'ajmwagar/vim-deus'
-Plug 'noahfrederick/vim-noctu'
-Plug 'chriskempson/vim-tomorrow-theme'
 call plug#end()
 execute pathogen#infect()
