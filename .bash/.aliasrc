@@ -68,6 +68,7 @@ alias ..5="cd ../../../../.."
 alias gs="git status"
 alias gd="git diff"
 alias gp="git pull"
+alias gb="git branch"
 
 # Making git super cool
 alias master="git checkout master"

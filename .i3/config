@@ -57,6 +57,9 @@ floating_modifier $mod
 # bindsym $mod+Return exec terminal
 bindsym $mod+Return exec kitty
 
+# start slack
+bindsym $mod+p exec slack
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
@@ -392,11 +395,8 @@ bindsym $mod+m bar mode toggle
 #############################
 
 # Set inner/outer gaps
-gaps inner 14
-gaps outer 2
-
-# Smart gaps (gaps used if only more than one container on the workspace)
-smart_gaps on
+gaps inner 4
+gaps outer 4
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace)
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)

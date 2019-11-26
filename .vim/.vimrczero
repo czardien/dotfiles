@@ -6,3 +6,5 @@ source ~/dotfiles/.vim/.vimrccmds
 
 " Airline configuration
 source ~/dotfiles/.vim/.vimrcline
+
+colorscheme landscape
