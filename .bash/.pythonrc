@@ -12,7 +12,7 @@ pyvenv () {
   echo -e "alias activate-$name='source $PYVENVS/$name/bin/activate'" >> $PYVENVS/.aliasrc
 
   # Update PS1 to something pretty
-  echo -e "PS1=\"\[\033[36;1m\]$name ❯\[\033[m\] $PS1\"" >> $PYVENVS/$name/bin/activate
+  echo -e "PS1=\"\[\033[0;36m\]$name\[\033[m\] ❯ $PS1\"" >> $PYVENVS/$name/bin/activate
 }
 
 # Above populates below sourced script
