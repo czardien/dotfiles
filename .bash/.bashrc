@@ -1,6 +1,9 @@
 # For all exports
 [ -f ~/dotfiles/.bash/.bash_exports ] && source ~/dotfiles/.bash/.bash_exports
 
+# For all exports
+[ -f ~/dotfiles/.bash/.bash_exports ] && source ~/dotfiles/.bash/.bash_ps1
+
 # For locales if needed, needed to hack it quickly
 [ -f ~/dotfiles/.bash/.bashlocales ] && source ~/dotfiles/.bash/.bashlocales
 
