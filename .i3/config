@@ -54,8 +54,10 @@ font pango:DejaVu Sans Mono 12
 floating_modifier $mod
 
 # start a terminal
-# bindsym $mod+Return exec terminal
 bindsym $mod+Return exec termite
+
+# start slack
+bindsym $mod+Shift+bracketleft exec slack
 
 # start slack
 bindsym $mod+p exec slack
