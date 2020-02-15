@@ -11,4 +11,5 @@ function __git_ps1 () {
 	printf -- " \033[0;33m%s\033[m ❯" "Ґ $PS_GIT"
 }
 
-PS1='\[\033[0;34m\]\h\[\033[m\] ❯ \[\033[0;35m\]\w\[\033[m\] ❯$(__git_kubecontext)$(__git_ps1)\n↳ '
+PS1='\[\033[0;34m\]\h\[\033[m\] ❯ \[\033[0;35m\]\w\[\033[m\] ❯$(__git_ps1)\n↳ '
+PS1_with_kubectx='\[\033[0;34m\]\h\[\033[m\] ❯ \[\033[0;35m\]\w\[\033[m\] ❯$(__git_kubecontext)$(__git_ps1)\n↳ '
