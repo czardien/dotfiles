@@ -2,18 +2,21 @@
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
 
-# Opening with vim from fzf
-export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(vim {})+abort'"
-
-# Using ag to search (The Silver Searcher) and showing hidden files
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
-
 # Making ls pretty
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 
 # Setting term to 256 colours
 export TERM=screen-256color
+
+# Setting editor
+export EDITOR=vim
+
+# Opening with vim from fzf
+export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(vim {})+abort'"
+
+# Using ag to search (The Silver Searcher) and showing hidden files
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
 # From https://github.com/junegunn/fzf#respecting-gitignore
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
