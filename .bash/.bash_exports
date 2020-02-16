@@ -1,6 +1,8 @@
 # To use go
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
+# pip install --user will put binaries there
+export PATH=$PATH:$HOME/.local/bin
 
 # Making ls pretty
 export CLICOLOR=1
