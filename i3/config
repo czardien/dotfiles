@@ -383,7 +383,7 @@ set_from_resource $term_color15    color15
 # }
 
 bar {
-    font pango:Hack 12
+    font pango:Hack 10
     position bottom
     status_command /usr/bin/i3status-rs ~/.config/i3/status.toml
     colors {
