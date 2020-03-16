@@ -1,10 +1,10 @@
 " Plugins
-source ~/dotfiles/.vim/.vimrcplugs
+source ~/dotfiles/vim/.vimrcplugs
 
 " Sets, lets, autocmds, nmaps, nnoremaps
-source ~/dotfiles/.vim/.vimrccmds
+source ~/dotfiles/vim/.vimrccmds
 
 " Airline configuration
-source ~/dotfiles/.vim/.vimrcline
+source ~/dotfiles/vim/.vimrcline
 
 colorscheme landscape

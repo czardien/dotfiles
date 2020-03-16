@@ -8,12 +8,8 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " Vundle
 Plugin 'gmarik/Vundle.vim'
-" For Git integration
-Plugin 'tpope/vim-fugitive'
 " To integrate my favourite searching tool
 Plugin 'mileszs/ack.vim'
-" To display git branch
-Plugin 'itchyny/vim-gitbranch'
 " Use LightLine
 Plugin 'itchyny/lightline.vim'
 call vundle#end()

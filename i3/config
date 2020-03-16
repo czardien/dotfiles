@@ -385,7 +385,7 @@ set_from_resource $term_color15    color15
 bar {
     font pango:Hack 12
     position bottom
-    status_command /usr/local/bin/i3status-rs ~/.config/i3/status.toml
+    status_command /usr/bin/i3status-rs ~/.config/i3/status.toml
     colors {
         separator #666666
         background #222222

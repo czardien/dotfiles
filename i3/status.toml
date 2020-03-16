@@ -37,6 +37,3 @@ format_up_to_date = "system up to date"
 block = "time"
 interval = 60
 format = "%a %d/%m %R"
-
-[[block]]
-block = "sound"
