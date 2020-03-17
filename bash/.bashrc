@@ -7,6 +7,9 @@
 # For locales if needed, needed to hack it quickly
 [ -f ~/dotfiles/bash/.bashlocales ] && source ~/dotfiles/bash/.bashlocales
 
+# For anything dependant on the X server
+[ -f ~/dotfiles/bash/.bash_x11 ] && source ~/dotfiles/bash/.bash_x11
+
 # For fzf key bindings
 [ -f ~/dotfiles/bash/.bash_fzf ] && source ~/dotfiles/bash/.bash_fzf
 

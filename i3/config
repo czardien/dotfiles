@@ -67,6 +67,8 @@ bindsym $mod+Shift+q kill
 
 # toggle/untoggle transparency
 bindsym $mod+t exec systemctl --user is-active picom > /dev/null && systemctl --user stop picom || systemctl --user restart picom
+
+# change wallpaper
 bindsym $mod+Shift+w exec systemctl --user restart wallpaper
 
 # start program launcher
