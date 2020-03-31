@@ -72,12 +72,3 @@ alias gb="git branch"
 
 # Making git super cool
 alias master="git checkout master"
-
-# To get some nice python development
-[ -f ~/dotfiles/.vim/.vimrcpy ] && alias vimpython="vim -u ~/dotfiles/.vim/.vimrcpy"
-
-# To get some nice go development
-[ -f ~/dotfiles/.vim/.vimrcgo ] && alias vimgo="vim -u ~/dotfiles/.vim/.vimrcgo"
-
-# To get some nice javascript development
-[ -f ~/dotfiles/.vim/.vimrcjs ] && alias vimjs="vim -u ~/dotfiles/.vim/.vimrcjs"

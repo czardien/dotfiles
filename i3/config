@@ -54,13 +54,16 @@ font pango:DejaVu Sans Mono 12
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec termite --title=sandsky -e 'tmux new-session -t sandsky'
+
+# start fzfmenu
+bindsym $mod+p exec fzfmenu.sh
+
+# start Kui
+bindsym $mod+Shift+u exec /home/adrien/.local/bin/Kui-linux-x64/Kui
 
 # start slack
 bindsym $mod+Shift+bracketleft exec slack
-
-# start slack
-bindsym $mod+p exec slack
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -251,6 +254,7 @@ for_window [class="Skype"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
+for_window [class="fzfmenu"] floating enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
