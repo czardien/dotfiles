@@ -1,6 +1,6 @@
 PYVENVS=~/.venvs
+PYVENVS_ALIASRC=$PYVENVS/.aliasrc
 
-# Just needs a python3 installation
 pyvenv () {
   local name
   name=$1
@@ -9,11 +9,27 @@ pyvenv () {
 
   mkdir -p $PYVENVS && \
   python3 -m venv $PYVENVS/$name && \
-  echo -e "alias activate-$name='source $PYVENVS/$name/bin/activate'" >> $PYVENVS/.aliasrc
+  echo -e "alias activate-$name='source $PYVENVS/$name/bin/activate'" >> $PYVENVS_ALIASRC
 
-  # FIXEME: Update PS1 to something pretty
-  # echo -e "PS1=\"\[\033[0;36m\]$name\[\033[m\] ❯ $PS1\"" >> $PYVENVS/$name/bin/activate
+  echo "PS1=\"\[\033[1;30m\]$name\[\033[m\] \[\033[1;37m\]❯\[\033[m\]\$PS1_BASE\"" >> $PYVENVS/$name/bin/activate
+  echo "export PS1" >> $PYVENVS/$name/bin/activate
+}
+
+pyvenv-ls () {
+  ls -1 $PYVENVS
+}
+
+pyvenv-tear () {
+  local name
+  name=$1
+
+  [ ! -d $PYVENVS/$name ] && echo "Error: virtual environment '$name' not found at: $PYVENVS/$name" && return 1
+  rm -rf $PYVENVS/$name
+
+  _alias=$(cat $PYVENVS_ALIASRC | grep "activate-$name")
+  [[ -z $_alias ]] && echo "Warning: no alias found for: $name at: $PYVENVS_ALIASRC" || \
+          sed -i "/^alias activate-$name/d" $PYVENVS_ALIASRC
 }
 
 # Above populates below sourced script
-[ -f $PYVENVS/.aliasrc ] && source $PYVENVS/.aliasrc
+[ -f $PYVENVS_ALIASRC ] && source $PYVENVS_ALIASRC
