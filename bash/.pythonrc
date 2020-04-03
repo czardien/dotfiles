@@ -11,8 +11,8 @@ pyvenv () {
   python3 -m venv $PYVENVS/$name && \
   echo -e "alias activate-$name='source $PYVENVS/$name/bin/activate'" >> $PYVENVS_ALIASRC
 
-  echo "PS1=\"\[\033[1;30m\]$name\[\033[m\] \[\033[1;37m\]❯\[\033[m\]\$PS1_BASE\"" >> $PYVENVS/$name/bin/activate
-  echo "export PS1" >> $PYVENVS/$name/bin/activate
+  # echo "PS1=\"\[\033[1;30m\]$name\[\033[m\] \[\033[1;37m\]❯\[\033[m\]\$PS1_BASE\"" >> $PYVENVS/$name/bin/activate
+  # echo "export PS1" >> $PYVENVS/$name/bin/activate
 }
 
 pyvenv-ls () {
