@@ -16,15 +16,6 @@ export TERM=screen-256color
 # Setting editor
 export EDITOR=vim
 
-# Opening with vim from fzf
-export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(vim {})+abort'"
-
-# Using ag to search (The Silver Searcher) and showing hidden files
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
-
-# From https://github.com/junegunn/fzf#respecting-gitignore
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
 # Profiling bash startup (comment)
 # If you startup a new Bash session manually (i.e. bash -xl), you can see what is run on login.
 #PS4='+ $(date "+%s.%N")\011 '

@@ -1,3 +1,12 @@
+# Opening with vim from fzf
+export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(vim {})+abort'"
+
+# Using ag to search (The Silver Searcher) and showing hidden files
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+
+# From https://github.com/junegunn/fzf#respecting-gitignore
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
 [ -f /usr/share/fzf/key-bindings.bash ] && source /usr/share/fzf/key-bindings.bash || echo -e "Warning: /usr/share/fzf/key-bindings.bash not found"
 [ -f /usr/share/fzf/completion.bash ] && source /usr/share/fzf/completion.bash || echo -e "Warning: /usr/share/fzf/completion.bash not found"
 [ -f ~/fzf-utils/fzf_utils.sh ] && source ~/fzf-utils/fzf_utils.sh || echo -e "Warning: ~/fzf-utils/fzf_utils.sh not found"
