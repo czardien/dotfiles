@@ -1,5 +1,5 @@
 # Opening with vim from fzf
-export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(vim {})+abort' --reverse --border=rounded --height ${FZF_TMUX_HEIGHT:-40%}"
+export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(vim {})+abort' --reverse --border=rounded --height ${FZF_TMUX_HEIGHT:-50%}"
 
 # Using ag to search (The Silver Searcher) and showing hidden files
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
