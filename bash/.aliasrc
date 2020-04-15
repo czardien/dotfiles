@@ -72,3 +72,6 @@ alias gb="git branch"
 
 # Making git super cool
 alias master="git checkout master"
+
+# Making installing local nodejs binaries smooth as silk
+alias npm-exec="PATH=$(npm bin):$PATH"
