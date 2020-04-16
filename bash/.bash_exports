@@ -1,10 +1,4 @@
-# To use go
-export GOPATH=~/go
-export PATH=$PATH:$GOPATH/bin
-# pip install --user will put binaries there
 export PATH=$PATH:$HOME/.local/bin
-# to use cargo crates
-export PATH=$PATH:/root/.cargo/bin
 
 # Making ls pretty
 export CLICOLOR=1
