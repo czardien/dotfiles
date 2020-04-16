@@ -22,8 +22,11 @@
 # For all functions
 [ -f ~/dotfiles/bash/.bash_funcs ] && source ~/dotfiles/bash/.bash_funcs || echo -e "Warning: ~/dotfiles/bash/.bash_funcs not found"
 
+# For all things rust
+[ -f ~/dotfiles/bash/.bash_rust ] && source ~/dotfiles/bash/.bash_rust || echo -e "Warning: ~/dotfiles/bash/.bash_rust not found"
+
 # For tiny python virtual environment business
-[ -f ~/dotfiles/bash/.pythonrc ] && source ~/dotfiles/bash/.pythonrc || echo -e "Warning: ~/dotfiles/bash/.pythonrc not found"
+[ -f ~/dotfiles/bash/.bash_python ] && source ~/dotfiles/bash/.bash_python || echo -e "Warning: ~/dotfiles/bash/.bash_python not found"
 
 # Profiling bash startup (comment)
 # If you startup a new Bash session manually (i.e. bash -xl), you can see what is run on login.
