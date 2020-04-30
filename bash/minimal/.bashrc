@@ -55,7 +55,7 @@ alias watch="watch -n 5 -d --color"
 alias preview="fzf --preview 'bat --color always {}'"
 alias man="man -P 'bat --color always'"
 alias ack="ack --pager='bat --color always' --colour"
-alias ls='ls -GFh'
+alias ls='ls -Fh'
 alias exa='exa --color always --group-directories-first'
 alias l='exa --color always --group-directories-first -T -L 1 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
 alias ll='exa --color always --group-directories-first -T -L 2 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
