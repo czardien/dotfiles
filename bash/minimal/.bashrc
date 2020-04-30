@@ -39,7 +39,7 @@ export LANGUAGE=en_GB.UTF-8
 export LC_ALL=en_GB.UTF-8
 #================================
 #= FZF magic
-export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(vim {})+abort' --reverse --border=rounded --height ${FZF_TMUX_HEIGHT:-50%}"
+export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(vim {})+abort' --reverse --height ${FZF_TMUX_HEIGHT:-50%}"
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
