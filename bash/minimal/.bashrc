@@ -44,7 +44,6 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 [ -f /usr/share/fzf/key-bindings.bash ] && source /usr/share/fzf/key-bindings.bash || echo -e "Warning: /usr/share/fzf/key-bindings.bash not found"
-[ -f /usr/share/fzf/completion.bash ] && source /usr/share/fzf/completion.bash || echo -e "Warning: /usr/share/fzf/completion.bash not found"
 [ -f ~/fzf-utils/fzf_utils.sh ] && source ~/fzf-utils/fzf_utils.sh || echo -e "Warning: ~/fzf-utils/fzf_utils.sh not found"
 
 #================================
@@ -92,12 +91,3 @@ alias gd="git diff"
 alias gp="git pull"
 alias gb="git branch"
 alias master="git checkout master"
-
-# For tiny python virtual environment business
-[ -f ~/dotfiles/bash/.pythonrc ] && source ~/dotfiles/bash/.pythonrc || echo -e "Warning: ~/dotfiles/bash/.pythonrc not found"
-
-# Profiling bash startup (comment)
-# If you startup a new Bash session manually (i.e. bash -xl), you can see what is run on login.
-#PS4='+ $(date "+%s.%N")\011 '
-#set +x
-#exec 2>&3 3>&-
