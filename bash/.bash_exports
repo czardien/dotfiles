@@ -9,9 +9,3 @@ export TERM=screen-256color
 
 # Setting editor
 export EDITOR=vim
-
-# Profiling bash startup (comment)
-# If you startup a new Bash session manually (i.e. bash -xl), you can see what is run on login.
-#PS4='+ $(date "+%s.%N")\011 '
-#set +x
-#exec 2>&3 3>&-

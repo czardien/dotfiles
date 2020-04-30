@@ -16,7 +16,7 @@ pyvenv () {
 }
 
 pyvenv-ls () {
-  ls -1 $PYVENVS
+  ls -1 $PYVENVS | sed 's:/*$::'
 }
 
 pyvenv-tear () {
