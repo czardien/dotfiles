@@ -44,7 +44,6 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 [ -f /usr/share/fzf/key-bindings.bash ] && source /usr/share/fzf/key-bindings.bash || echo -e "Warning: /usr/share/fzf/key-bindings.bash not found"
-[ -f ~/fzf-utils/fzf_utils.sh ] && source ~/fzf-utils/fzf_utils.sh || echo -e "Warning: ~/fzf-utils/fzf_utils.sh not found"
 
 #================================
 #= Aliases
