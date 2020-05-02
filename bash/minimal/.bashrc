@@ -28,7 +28,7 @@ function __pyvenv_ps1 () {
 }
 
 set_bash_prompt(){
-    PS1="$(__pyvenv_ps1)\[\033[1;36m\]\w\[\033[m\] \[\033[1;37m\]❯\[\033[m\]$(__git_ps1)$(__suffix_ps1)"
+    PS1="$(__pyvenv_ps1)\[\033[1;31m\]shash-box\[\033[m\] \[\033[1;37m\]❯\[\033[m\] \[\033[1;36m\]\w\[\033[m\] \[\033[1;37m\]❯\[\033[m\]$(__git_ps1)$(__suffix_ps1)"
 }
 
 PROMPT_COMMAND=set_bash_prompt
