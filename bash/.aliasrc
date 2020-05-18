@@ -72,3 +72,6 @@ alias gb="git branch"
 
 # Making git super cool
 alias master="git checkout master"
+
+# Sourcing local aliasrc
+[[ -f $HOME/.local/.aliasrc ]] && source $HOME/.local/.aliasrc
