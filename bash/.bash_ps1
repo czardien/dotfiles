@@ -6,7 +6,7 @@
 function __git_ps1 () {
 	ref=$(git symbolic-ref HEAD 2> /dev/null) || return 0
 	PS_GIT="${ref#refs/heads/}"
-	echo -e " \[\033[1;33m\]Ґ $PS_GIT\[\033[m\] \[\033[1;37m\]❯\[\033[m\]"
+	echo -e " \[\033[1;34m\]Ґ $PS_GIT\[\033[m\] \[\033[1;37m\]❯\[\033[m\]"
 }
 
 function __suffix_ps1 () {
