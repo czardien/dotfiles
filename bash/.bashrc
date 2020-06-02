@@ -4,9 +4,6 @@
 # For all exports
 [ -f ~/dotfiles/bash/.bash_ps1 ] && source ~/dotfiles/bash/.bash_ps1 || echo -e "Warning: ~/dotfiles/bash/.bash_ps1 exports not found"
 
-# For locales if needed, needed to hack it quickly
-[ -f ~/dotfiles/bash/.bashlocales ] && source ~/dotfiles/bash/.bashlocales || echo -e "Warning: ~/dotfiles/bash/.bashlocales not found"
-
 # For anything dependant on the X server
 [ -f ~/dotfiles/bash/.bash_x11 ] && source ~/dotfiles/bash/.bash_x11 || echo -e "Warning: ~/dotfiles/bash/.bash_x11 not found"
 
