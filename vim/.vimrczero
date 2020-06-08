@@ -8,3 +8,6 @@ source ~/dotfiles/vim/.vimrccmds
 source ~/dotfiles/vim/.vimrcline
 
 colorscheme nord
+
+" Setting viminf files to .vim directory
+set viminfo+=n~/.vim/viminfo
