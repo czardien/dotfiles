@@ -70,6 +70,12 @@ alias gd="git diff"
 alias gp="git pull"
 alias gb="git branch"
 
+# Make docker awesome
+alias dka='dkc;dki;dkv'
+alias dkc='docker ps -aq | xargs docker rm -f'
+alias dki='docker images -aq | xargs docker rmi -f'
+alias dkv='docker volume ls -qf dangling=true | xargs docker volume rm'
+
 # Making git super cool
 alias master="git checkout master"
 
