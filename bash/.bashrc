@@ -16,6 +16,9 @@
 # For all aliases
 [ -f ~/dotfiles/bash/.aliasrc ] && source ~/dotfiles/bash/.aliasrc || echo -e "Warning: ~/dotfiles/bash/.aliasrc not found"
 
+# Sourcing local aliasrc
+[[ -f $HOME/.local/.aliasrc ]] && source $HOME/.local/.aliasrc
+
 # For all functions
 [ -f ~/dotfiles/bash/.bash_funcs ] && source ~/dotfiles/bash/.bash_funcs || echo -e "Warning: ~/dotfiles/bash/.bash_funcs not found"
 

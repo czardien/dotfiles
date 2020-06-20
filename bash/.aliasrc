@@ -55,7 +55,7 @@ alias l4a='exa --color always --group-directories-first -T -L 4 -I "*.pyc|*pycac
 alias l5a='exa --color always --group-directories-first -T -L 4 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git -a'
 alias l6a='exa --color always --group-directories-first -T -L 4 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git -a'
 
-# https://www.thegeekstuff.com/2008/10/6-awesome-linux-cd-command-hacks-productivity-tip3-for-geeks/
+# https://www.thegeekstuff.com/2008/10/6-awesome-linux-cd-command-hacks-productivity-tip3-for-geeks/
 
 # Being extra clever to navigate up the directories
 alias ..="cd .."
@@ -78,6 +78,3 @@ alias dkv='docker volume ls -qf dangling=true | xargs docker volume rm'
 
 # Making git super cool
 alias master="git checkout master"
-
-# Sourcing local aliasrc
-[[ -f $HOME/.local/.aliasrc ]] && source $HOME/.local/.aliasrc
