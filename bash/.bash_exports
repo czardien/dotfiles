@@ -9,3 +9,6 @@ export TERM=screen-256color
 
 # Setting editor
 export EDITOR=vim
+
+# Setting bat theme
+export BAT_THEME="OneHalfLight"

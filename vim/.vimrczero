@@ -7,7 +7,7 @@ source ~/dotfiles/vim/.vimrccmds
 " Airline configuration
 source ~/dotfiles/vim/.vimrcline
 
-colorscheme nord
+colorscheme Atelier_DuneLight
 
 " Setting viminf files to .vim directory
 set viminfo+=n~/.vim/viminfo
