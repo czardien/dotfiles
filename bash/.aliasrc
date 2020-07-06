@@ -68,7 +68,13 @@ alias ..5="cd ../../../../.."
 alias gs="git status"
 alias gd="git diff"
 alias gp="git pull"
-alias gb="git branch"
+
+# Make git FZF kind of awesome
+function gb() {
+  local br
+  br=$(git branch | fzf | awk '{printf "%s\n", $2}')
+  git checkout "$br"
+}
 
 # Make docker awesome
 alias dka='dkc;dki;dkv'
