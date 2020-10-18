@@ -1,32 +1,256 @@
-# For all exports
-[ -f ~/dotfiles/bash/.bash_exports ] && source ~/dotfiles/bash/.bash_exports || echo -e "Warning: ~/dotfiles/bash/.bash_exports not found"
+#########
+#  TERM #
+#       #
+#########
 
-# For all exports
-[ -f ~/dotfiles/bash/.bash_ps1 ] && source ~/dotfiles/bash/.bash_ps1 || echo -e "Warning: ~/dotfiles/bash/.bash_ps1 exports not found"
+export TERM=screen-256color
 
-# For anything dependant on the X server
-[ -f ~/dotfiles/bash/.bash_x11 ] && source ~/dotfiles/bash/.bash_x11 || echo -e "Warning: ~/dotfiles/bash/.bash_x11 not found"
+#########
+#  PATH #
+#       #
+#########
 
-# For fzf key bindings
-[ -f ~/dotfiles/bash/.bash_fzf ] && source ~/dotfiles/bash/.bash_fzf || echo -e "Warning: ~/dotfiles/bash/.bash_fzf not found"
+export PATH=$PATH:$HOME/.local/bin
 
-# For all things LaTeX
-[ -f ~/dotfiles/bash/.bash_tex ] && source ~/dotfiles/bash/.bash_tex || echo -e "Warning: ~/dotfiles/bash/.bash_tex not found"
+########
+#  BAT #
+#      #
+########
 
-# For all aliases
-[ -f ~/dotfiles/bash/.aliasrc ] && source ~/dotfiles/bash/.aliasrc || echo -e "Warning: ~/dotfiles/bash/.aliasrc not found"
+export BAT_THEME="OneHalfLight"
 
-# Sourcing local aliasrc
-[[ -f $HOME/.local/.aliasrc ]] && source $HOME/.local/.aliasrc
+########
+#  PS1 #
+#      #
+########
 
-# For all functions
-[ -f ~/dotfiles/bash/.bash_funcs ] && source ~/dotfiles/bash/.bash_funcs || echo -e "Warning: ~/dotfiles/bash/.bash_funcs not found"
+# Relevant resources for common issues:
+# https://unix.stackexchange.com/questions/105958/terminal-prompt-not-wrapping-correctly
+# https://unix.stackexchange.com/questions/11156/re-escape-brackets-in-ps1
+# https://stackoverflow.com/questions/6592077/bash-prompt-and-echoing-colors-inside-a-function
 
-# For all things rust
-[ -f ~/dotfiles/bash/.bash_rust ] && source ~/dotfiles/bash/.bash_rust || echo -e "Warning: ~/dotfiles/bash/.bash_rust not found"
+function __git_ps1 () {
+	ref=$(git symbolic-ref HEAD 2> /dev/null) || return 0
+	PS_GIT="${ref#refs/heads/}"
+	echo -e " \[\033[1;34m\]Ґ $PS_GIT\[\033[m\] \[\033[1;37m\]❯\[\033[m\]"
+}
 
-# For tiny python virtual environment business
-[ -f ~/dotfiles/bash/.bash_python ] && source ~/dotfiles/bash/.bash_python || echo -e "Warning: ~/dotfiles/bash/.bash_python not found"
+function __kube () {
+	ctx=$(kubectl config current-context 2> /dev/null) || return 0
+	echo -e " \[\033[1;35m\]$ctx\[\033[m\] \[\033[1;37m\]❯\[\033[m\]"
+}
+
+function __suffix_ps1 () {
+	[[ "$(pwd)" == "$HOME" ]] && echo -e  "\[\033[1;37m\] \[\033[m\]" || echo -e "\n \[\033[1;37m\]↳\[\033[m\] "
+}
+
+function __pyvenv_ps1 () {
+	[[ -z $VIRTUAL_ENV ]] && echo -e " " || echo -e " \[\033[1;30m\]$(basename $VIRTUAL_ENV)\[\033[m\] \[\033[1;37m\]❯\[\033[m\] "
+}
+
+set_bash_prompt(){
+    PS1="$(__pyvenv_ps1)\[\033[1;36m\]\w\[\033[m\] \[\033[1;37m\]❯\[\033[m\]$(__git_ps1)$(__suffix_ps1)"
+}
+
+PROMPT_COMMAND=set_bash_prompt
+
+########
+#  FZF #
+#      #
+########
+
+# Opening with vim from fzf
+export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(vim {})+abort' --reverse --border=rounded --height ${FZF_TMUX_HEIGHT:-50%}"
+
+# Using ag to search (The Silver Searcher) and showing hidden files
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+
+# From https://github.com/junegunn/fzf#respecting-gitignore
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# Setting preview thing with fzf
+alias preview="fzf --preview 'bat --color always {}'"
+
+[ -f /usr/share/fzf/key-bindings.bash ] && source /usr/share/fzf/key-bindings.bash || echo -e "Warning: /usr/share/fzf/key-bindings.bash not found"
+[ -f /usr/share/fzf/completion.bash ] && source /usr/share/fzf/completion.bash || echo -e "Warning: /usr/share/fzf/completion.bash not found"
+
+########
+#  X11 #
+#      #
+########
+
+setxkbmap gb
+
+#########
+#  TMUX #
+#       #
+#########
+
+# Making tmux pick up colours
+alias tmux="tmux -2"
+
+##############
+#  Shortcuts #
+#            #
+##############
+
+alias t="touch"                          # To touch with fanciness
+alias cat='bat'                          # Making bat the default cat
+alias src="source ~/.bashrc"             # Making life magical
+alias watch="watch -n 5 -d --color"      # Making watch pretty
+alias man="man -P 'bat --color always'"  # Making man more handsomer
+
+#######
+#  CD #
+#     #
+#######
+
+# Being extra clever to navigate up the directories
+alias ..="cd .."
+alias ..2="cd ../.."
+alias ..3="cd ../../.."
+alias ..4="cd ../../../.."
+alias ..5="cd ../../../../.."
+
+########
+#  GIT #
+#      #
+########
+
+# Make git awesome
+alias gs="git status"
+alias gd="git diff"
+alias gp="git pull"
+
+# Making git super cool
+alias master="git checkout master"
+
+# Make git FZF kind of awesome
+function gb() {
+  local br
+  br=$(git branch | fzf | awk '{printf "%s\n", $2}')
+  git checkout "$br"
+}
+
+# Go to a repository URL
+function gr () {
+  local git_url
+  [ -d .git ] || echo "Not a git directory"
+  [ -d .git ] || return 1
+  git_url=https://$(git remote get-url origin | sed 's/\.git//g' | sed 's/git\@//g' | tr ':' '/')
+  prgr=firefox
+  [ -n $(which python3) ] && prgr="python3 -m webbrowser"
+  $prgr $git_url &> /dev/null
+}
+
+# Goes over the given directory and looks for modifications in git repositories
+ggotobed () {
+  local path allrepos repo proj changes controller
+  path=$1
+  [ -n "$1" ] || path="."
+  allrepos=$(fd --hidden --type d ".git" $path)
+  controller=true
+  for repo in $allrepos
+  do
+    proj=$(dirname "$repo")
+    changes=$(cd "$proj" && git status --porcelain)
+    [ -n "$changes" ] && echo "[ X ][ $(echo "$path/$proj" | tr -s '//' '/') ]"
+    [ -n "$changes" ] && controller=false
+  done
+  [ "$controller" = "true" ] && echo "[ V ] Go to bed!"
+}
+
+###########
+#  DOCKER #
+#         #
+###########
+
+# Make docker awesome
+alias dka='dkc;dki;dkv'
+alias dkc='docker ps -aq | xargs docker rm -f'
+alias dki='docker images -aq | xargs docker rmi -f'
+alias dkv='docker volume ls -qf dangling=true | xargs docker volume rm'
+
+########
+#  EXA #
+#      #
+########
+
+# Make use of exa
+alias exa='exa --color always --group-directories-first'
+
+# Being clever when using exa
+alias l='exa --color always --group-directories-first -T -L 1 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
+alias ll='exa --color always --group-directories-first -T -L 2 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
+alias lll='exa --color always --group-directories-first -T -L 3 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
+alias llll='exa --color always --group-directories-first -T -L 4 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
+# Alternative
+alias l2='exa --color always --group-directories-first -T -L 2 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
+alias l3='exa --color always --group-directories-first -T -L 3 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
+alias l4='exa --color always --group-directories-first -T -L 4 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
+alias l5='exa --color always --group-directories-first -T -L 5 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
+alias l6='exa --color always --group-directories-first -T -L 6 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
+alias l7='exa --color always --group-directories-first -T -L 7 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
+alias l8='exa --color always --group-directories-first -T -L 8 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
+alias l9='exa --color always --group-directories-first -T -L 9 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
+
+# Showing everything
+alias la='exa --color always --group-directories-first -T -L 1 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git -a'
+alias lla='exa --color always --group-directories-first -T -L 2 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git -a'
+alias llla='exa --color always --group-directories-first -T -L 3 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git -a'
+alias lllla='exa --color always --group-directories-first -T -L 4 -l --git -a'
+# Showing everything; alternative
+alias l2a='exa --color always --group-directories-first -T -L 2 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git -a'
+alias l3a='exa --color always --group-directories-first -T -L 3 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git -a'
+alias l4a='exa --color always --group-directories-first -T -L 4 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git -a'
+alias l5a='exa --color always --group-directories-first -T -L 4 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git -a'
+alias l6a='exa --color always --group-directories-first -T -L 4 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git -a'
+
+###########
+#  PYTHON #
+#         #
+###########
+
+export PYVENVS=~/.venvs
+export PYVENVS_ALIASRC=$PYVENVS/.aliasrc
+
+pyvenv () {
+  local name
+  name=$1
+
+  [ -d $PYVENVS/$name ] && echo "Virtual environment '$name' already exists at: $PYVENVS/$name" && return 1
+
+  mkdir -p $PYVENVS && \
+  python3 -m venv $PYVENVS/$name && \
+  echo -e "alias activate-$name='source $PYVENVS/$name/bin/activate'" >> $PYVENVS_ALIASRC
+
+  # echo "PS1=\"\[\033[1;30m\]$name\[\033[m\] \[\033[1;37m\]❯\[\033[m\]\$PS1_BASE\"" >> $PYVENVS/$name/bin/activate
+  # echo "export PS1" >> $PYVENVS/$name/bin/activate
+}
+
+pyvenv-ls () {
+  ls -1 $PYVENVS | sed 's:/*$::'
+}
+
+pyvenv-tear () {
+  local name
+  name=$1
+
+  [ ! -d $PYVENVS/$name ] && echo "Error: virtual environment '$name' not found at: $PYVENVS/$name" && return 1
+  rm -rf $PYVENVS/$name
+
+  _alias=$(cat $PYVENVS_ALIASRC | grep "activate-$name")
+  [[ -z $_alias ]] && echo "Warning: no alias found for: $name at: $PYVENVS_ALIASRC" || \
+          sed -i "/^alias activate-$name/d" $PYVENVS_ALIASRC
+}
+
+# Above populates below sourced script
+[ -f $PYVENVS_ALIASRC ] && source $PYVENVS_ALIASRC
+
+###################
+#  BASH PROFILING #
+#                 #
+###################
 
 # Profiling bash startup (comment)
 # If you startup a new Bash session manually (i.e. bash -xl), you can see what is run on login.
