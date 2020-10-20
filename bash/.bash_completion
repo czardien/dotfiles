@@ -1,0 +1,13 @@
+#########
+#  PASS #
+#       #
+#########
+
+source /usr/share/bash-completion/completions/pass
+
+##########
+#  CHEAT #
+#        #
+##########
+
+source /home/adrien/.local/share/cheat/complete.bash

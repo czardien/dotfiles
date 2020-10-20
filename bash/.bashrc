@@ -1,3 +1,14 @@
+#     .--.              .--.
+#    : (\ ". _......_ ." /) :
+#     '.    `        `    .'
+#      /'   _        _   `\
+#     /     0}      {0     \
+#    |       /      \       |
+#    |     /'        `\     |
+#     \   | .  .==.  . |   /
+#      '._ \.' \__/ './ _.'
+#      /  ``'._-''-_.'``  \      ~ Hi!
+
 #########
 #  TERM #
 #       #
@@ -10,7 +21,14 @@ export TERM=screen-256color
 #       #
 #########
 
-export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.local/bin:$HOME/adrien/.npm-global/bin
+
+############
+#  SYSTEMD #
+#          #
+############
+
+export SYSTEMD_PAGER=cat
 
 ########
 #  BAT #
@@ -36,9 +54,7 @@ function __git_ps1 () {
 }
 
 function __kube () {
-	ctx=$(kubectl config current-context 2> /dev/null) || return 0
-	echo -e " \[\033[1;35m\]$ctx\[\033[m\] \[\033[1;37m\]❯\[\033[m\]"
-}
+	ctx=$(kubectl config current-context 2> /dev/null) || return 0 echo -e " \[\033[1;35m\]$ctx\[\033[m\] \[\033[1;37m\]❯\[\033[m\]" }
 
 function __suffix_ps1 () {
 	[[ "$(pwd)" == "$HOME" ]] && echo -e  "\[\033[1;37m\] \[\033[m\]" || echo -e "\n \[\033[1;37m\]↳\[\033[m\] "
@@ -88,6 +104,9 @@ setxkbmap gb
 
 # Making tmux pick up colours
 alias tmux="tmux -2"
+
+# Making tmux start when you say please
+alias tmuxplease="tmux new-session -t code"
 
 ##############
 #  Shortcuts #
@@ -144,7 +163,7 @@ function gr () {
 }
 
 # Goes over the given directory and looks for modifications in git repositories
-ggotobed () {
+function ggotobed () {
   local path allrepos repo proj changes controller
   path=$1
   [ -n "$1" ] || path="."
@@ -247,10 +266,47 @@ pyvenv-tear () {
 # Above populates below sourced script
 [ -f $PYVENVS_ALIASRC ] && source $PYVENVS_ALIASRC
 
-###################
-#  BASH PROFILING #
-#                 #
-###################
+########
+#  NVM #
+#      #
+########
+
+# Update NPM
+alias npmup="npm install -g npm"
+
+# List NPM Global Dependencies
+alias npmgl="npm list -g --depth=0"
+
+# Check NPM Global Dependencies for updates
+alias npmgo="npm outdated -g --depth=0"
+
+# Update NPM Global Dependencies
+alias npmgu="npm update -g --depth=0"
+
+##########
+#  CHEAT #
+#        #
+##########
+
+export CHEAT_USE_FZF=true
+
+####################
+#  BASH COMPLETION #
+#                  #
+####################
+
+# Use bash-completion, if available
+[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
+    . /usr/share/bash-completion/bash_completion
+
+######################
+#  BASH MAINTAINANCE #
+#                    #
+######################
+
+# Setting much more appropriate history size limit and file size
+export HISTSIZE=10000
+export HISTFILESIZE=10000
 
 # Profiling bash startup (comment)
 # If you startup a new Bash session manually (i.e. bash -xl), you can see what is run on login.
