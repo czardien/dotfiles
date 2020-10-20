@@ -73,8 +73,6 @@ call plug#end()
 " Pathogen thing
 execute pathogen#infect()
 
-call plug#begin('~/.vim/plugged')
-
 """"""""""""
 "   LEADER "
 "          "
