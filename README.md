@@ -2,13 +2,15 @@
 
 This is just dotfiles.
 
-## Font
+## Usage
 
-I like Hack: https://github.com/source-foundry/Hack.
-More sources: https://news.ycombinator.com/item?id=18271871
+```
+git clone git@github.com:czardien/dotfiles $HOME/.dotfiles
+```
 
-## Color Themes
+### Resources
 
-I like Tomorrow: https://github.com/chriskempson/tomorrow-theme
-More sources: https://news.ycombinator.com/item?id=4985813
-More sources: https://news.ycombinator.com/item?id=18421755
+* Hack font: https://github.com/source-foundry/Hack.
+* HN thread: https://news.ycombinator.com/item?id=18271871
+* Color scheme: https://news.ycombinator.com/item?id=4985813
+* Color scheme: https://news.ycombinator.com/item?id=18421755
