@@ -309,6 +309,9 @@ export CHEAT_USE_FZF=true
 export HISTSIZE=10000
 export HISTFILESIZE=10000
 
+# Sourcing anything that shouldn't live on a git repo
+[[ -f $HOME/.bashrc.secret ]] && source $HOME/.bashrc.secret
+
 # Profiling bash startup (comment)
 # If you startup a new Bash session manually (i.e. bash -xl), you can see what is run on login.
 #PS4='+ $(date "+%s.%N")\011 '
