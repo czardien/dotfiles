@@ -53,21 +53,30 @@ filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+
 " Vundle
 Plugin 'gmarik/Vundle.vim'
+
 " Use LightLine
 Plugin 'itchyny/lightline.vim'
+
 call vundle#end()
+
 filetype plugin indent on
 filetype plugin on
 filetype on
 
 " Plug thing
 call plug#begin()
+
 " FZF
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
+
+" Rust
+Plug 'rust-lang/rust.vim'
+
 call plug#end()
 
 " Pathogen thing
@@ -80,6 +89,14 @@ execute pathogen#infect()
 
 " Leader key
 let mapleader=" "
+
+""""""""""""
+"   SYNTAX "
+"          "
+""""""""""""
+
+" Enable syntax checking
+syntax enable
 
 """""""""""""""
 "   LIGHTLINE "
@@ -139,6 +156,14 @@ set nu
 set splitbelow
 " Make the new window appear on the right
 set splitright
+
+""""""""""""""
+"   RUST.VIM "
+"            "
+""""""""""""""
+
+" To run rustfmt on save
+let g:rustfmt_autosave = 1
 
 """""""""""""""""
 "   BACKUP DIRS "
