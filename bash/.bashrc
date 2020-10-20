@@ -54,7 +54,8 @@ function __git_ps1 () {
 }
 
 function __kube () {
-	ctx=$(kubectl config current-context 2> /dev/null) || return 0 echo -e " \[\033[1;35m\]$ctx\[\033[m\] \[\033[1;37m\]❯\[\033[m\]" }
+	ctx=$(kubectl config current-context 2> /dev/null) || return 0 echo -e " \[\033[1;35m\]$ctx\[\033[m\] \[\033[1;37m\]❯\[\033[m\]" 
+}
 
 function __suffix_ps1 () {
 	[[ "$(pwd)" == "$HOME" ]] && echo -e  "\[\033[1;37m\] \[\033[m\]" || echo -e "\n \[\033[1;37m\]↳\[\033[m\] "
