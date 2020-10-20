@@ -11,3 +11,10 @@ source /usr/share/bash-completion/completions/pass
 ##########
 
 source /home/adrien/.local/share/cheat/complete.bash
+
+########
+#  AWS #
+#      #
+########
+complete -C aws_completer aws-prod
+complete -C aws_completer aws-non-prod
