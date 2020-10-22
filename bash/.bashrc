@@ -9,45 +9,46 @@
 #      '._ \.' \__/ './ _.'
 #      /  ``'._-''-_.'``  \
 
-#############
-#  DOTFILES #
-#           #
-#############
+
+######################
+#           DOTFILES #
+#                    #
+######################
 
 alias dotfiles='cd /home/adrien/.dotfiles/'
 
-#########
-#  TERM #
-#       #
-#########
+######################
+#               TERM #
+#                    #
+######################
 
 export TERM=screen-256color
 
-#########
-#  PATH #
-#       #
-#########
+######################
+#               PATH #
+#                    #
+######################
 
 export PATH=$PATH:$HOME/.local/bin:$HOME/adrien/.npm-global/bin
 
-############
-#  SYSTEMD #
-#          #
-############
+######################
+#            SYSTEMD #
+#                    #
+######################
 
 export SYSTEMD_PAGER=cat
 
-########
-#  BAT #
-#      #
-########
+######################
+#                BAT #
+#                    #
+######################
 
 export BAT_THEME="OneHalfLight"
 
-########
-#  PS1 #
-#      #
-########
+######################
+#                PS1 #
+#                    #
+######################
 
 # Relevant resources for common issues:
 # https://unix.stackexchange.com/questions/105958/terminal-prompt-not-wrapping-correctly
@@ -78,10 +79,10 @@ set_bash_prompt(){
 
 PROMPT_COMMAND=set_bash_prompt
 
-########
-#  FZF #
-#      #
-########
+######################
+#                FZF #
+#                    #
+######################
 
 # Opening with vim from fzf
 export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(vim {})+abort' --reverse --border=rounded --height ${FZF_TMUX_HEIGHT:-50%}"
@@ -98,17 +99,17 @@ alias preview="fzf --preview 'bat --color always {}'"
 [ -f /usr/share/fzf/key-bindings.bash ] && source /usr/share/fzf/key-bindings.bash || echo -e "Warning: /usr/share/fzf/key-bindings.bash not found"
 [ -f /usr/share/fzf/completion.bash ] && source /usr/share/fzf/completion.bash || echo -e "Warning: /usr/share/fzf/completion.bash not found"
 
-########
-#  X11 #
-#      #
-########
+######################
+#                X11 #
+#                    #
+######################
 
 setxkbmap gb
 
-#########
-#  TMUX #
-#       #
-#########
+######################
+#               TMUX #
+#                    #
+######################
 
 # Making tmux pick up colours
 alias tmux="tmux -2"
@@ -116,10 +117,11 @@ alias tmux="tmux -2"
 # Making tmux start when you say please
 alias tmuxplease="tmux new-session -t code"
 
-##############
-#  Shortcuts #
-#            #
-##############
+
+######################
+#          SHORTCUTS #
+#                    #
+######################
 
 alias t="touch"                          # To touch with fanciness
 alias cat='bat'                          # Making bat the default cat
@@ -127,10 +129,11 @@ alias src="source ~/.bashrc"             # Making life magical
 alias watch="watch -n 5 -d --color"      # Making watch pretty
 alias man="man -P 'bat --color always'"  # Making man more handsomer
 
-#######
-#  CD #
-#     #
-#######
+
+######################
+#                 CD #
+#                    #
+######################
 
 # Being extra clever to navigate up the directories
 alias ..="cd .."
@@ -139,10 +142,10 @@ alias ..3="cd ../../.."
 alias ..4="cd ../../../.."
 alias ..5="cd ../../../../.."
 
-########
-#  GIT #
-#      #
-########
+######################
+#                GIT #
+#                    #
+######################
 
 # Make git awesome
 alias gs="git status"
@@ -164,7 +167,12 @@ function gr () {
   local git_url
   [ -d .git ] || echo "Not a git directory"
   [ -d .git ] || return 1
-  git_url=https://$(git remote get-url origin | sed 's/\.git//g' | sed 's/git\@//g' | tr ':' '/')
+  git_url=https://$(git remote get-url origin | \
+	  sed 's/\.git//g' | \
+	  sed 's/git\@//g' | \
+	  sed 's/-czardien//g' | \  # when setting `czardien` as user to the hostname in ssh config
+	  sed 's/-adrien-mg//g' | \  # when setting `adrien-mg` as user to the hostname in ssh config
+	  tr ':' '/')
   prgr=firefox
   [ -n $(which python3) ] && prgr="python3 -m webbrowser"
   $prgr $git_url &> /dev/null
@@ -187,10 +195,10 @@ function ggotobed () {
   [ "$controller" = "true" ] && echo "[ V ] Go to bed!"
 }
 
-###########
-#  DOCKER #
-#         #
-###########
+######################
+#             DOCKER #
+#                    #
+######################
 
 # Make docker awesome
 alias dka='dkc;dki;dkv'
@@ -198,10 +206,10 @@ alias dkc='docker ps -aq | xargs docker rm -f'
 alias dki='docker images -aq | xargs docker rmi -f'
 alias dkv='docker volume ls -qf dangling=true | xargs docker volume rm'
 
-########
-#  EXA #
-#      #
-########
+######################
+#                EXA #
+#                    #
+######################
 
 # Make use of exa
 alias exa='exa --color always --group-directories-first'
@@ -233,10 +241,10 @@ alias l4a='exa --color always --group-directories-first -T -L 4 -I "*.pyc|*pycac
 alias l5a='exa --color always --group-directories-first -T -L 4 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git -a'
 alias l6a='exa --color always --group-directories-first -T -L 4 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git -a'
 
-###########
-#  PYTHON #
-#         #
-###########
+######################
+#             PYTHON #
+#                    #
+######################
 
 export PYVENVS=~/.venvs
 export PYVENVS_ALIASRC=$PYVENVS/.aliasrc
@@ -274,10 +282,10 @@ pyvenv-tear () {
 # Above populates below sourced script
 [ -f $PYVENVS_ALIASRC ] && source $PYVENVS_ALIASRC
 
-########
-#  NVM #
-#      #
-########
+######################
+#                NVM #
+#                    #
+######################
 
 # Update NPM
 alias npmup="npm install -g npm"
@@ -291,17 +299,17 @@ alias npmgo="npm outdated -g --depth=0"
 # Update NPM Global Dependencies
 alias npmgu="npm update -g --depth=0"
 
-##########
-#  CHEAT #
-#        #
-##########
+######################
+#              CHEAT #
+#                    #
+######################
 
 export CHEAT_USE_FZF=true
 
-####################
-#  BASH COMPLETION #
-#                  #
-####################
+######################
+#    BASH COMPLETION #
+#                    #
+######################
 
 # Use bash-completion, if available
 [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
