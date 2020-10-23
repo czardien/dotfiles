@@ -98,6 +98,14 @@ let mapleader=" "
 " Enable syntax checking
 syntax enable
 
+""""""""""""
+"      ALE "
+"          "
+""""""""""""
+
+let b:ale_fixers = {'sql': ['sqlint']}
+let b:ale_linters = {'sql': ['sqlint']}
+
 """""""""""""""
 "   LIGHTLINE "
 "             "

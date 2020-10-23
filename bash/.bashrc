@@ -18,6 +18,13 @@
 alias dotfiles='cd /home/adrien/.dotfiles/'
 
 ######################
+#                AUR #
+#                    #
+######################
+
+alias aur='cd /home/adrien/.aur/'
+
+######################
 #               TERM #
 #                    #
 ######################
