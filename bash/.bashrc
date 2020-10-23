@@ -29,7 +29,12 @@ export TERM=screen-256color
 #                    #
 ######################
 
-export PATH=$PATH:$HOME/.local/bin:$HOME/adrien/.npm-global/bin
+# local
+export PATH=$PATH:$HOME/.local/bin
+# npm
+export PATH=$PATH:$HOME/adrien/.npm-global/bin
+# gem
+export PATH=$PATH:$HOME/.gem/ruby/2.7.0/bin
 
 ######################
 #            SYSTEMD #
@@ -170,8 +175,10 @@ function gr () {
   git_url=https://$(git remote get-url origin | \
 	  sed 's/\.git//g' | \
 	  sed 's/git\@//g' | \
-	  sed 's/-czardien//g' | \  # when setting `czardien` as user to the hostname in ssh config
-	  sed 's/-adrien-mg//g' | \  # when setting `adrien-mg` as user to the hostname in ssh config
+	  # when setting `czardien` as user to the hostname in ssh config
+	  sed 's/-czardien//g' | \
+	  # when setting `adrien-mg` as user to the hostname in ssh config
+	  sed 's/-adrien-mg//g' | \
 	  tr ':' '/')
   prgr=firefox
   [ -n $(which python3) ] && prgr="python3 -m webbrowser"
