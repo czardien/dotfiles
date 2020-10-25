@@ -25,6 +25,13 @@ alias dotfiles='cd /home/adrien/.dotfiles/'
 alias aur='cd /home/adrien/.aur/'
 
 ######################
+#        CHEATSHEETS #
+#                    #
+######################
+
+alias cheatsheets='cd /home/adrien/.cheatsheets/'
+
+######################
 #               TERM #
 #                    #
 ######################
