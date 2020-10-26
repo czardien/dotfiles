@@ -301,6 +301,9 @@ pyvenv-tear () {
 #                    #
 ######################
 
+# Use nvm if exists
+[ -f /usr/share/nvm/init-nvm.sh ] && source /usr/share/nvm/init-nvm.sh
+
 # Update NPM
 alias npmup="npm install -g npm"
 

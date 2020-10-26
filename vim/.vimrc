@@ -103,8 +103,8 @@ syntax enable
 "          "
 """"""""""""
 
-let b:ale_fixers = {'sql': ['sqlint']}
-let b:ale_linters = {'sql': ['sqlint']}
+let b:ale_fixers = {'sql': ['sqlint'], 'javascript': ['eslint'], 'typescript': ['eslint']}
+let b:ale_linters = {'sql': ['sqlint'], 'javascript': ['eslint'], 'typescript': ['eslint']}
 
 """""""""""""""
 "   LIGHTLINE "
