@@ -11,18 +11,26 @@
 
 
 ######################
-#           DOTFILES #
+#              UTILS #
 #                    #
 ######################
 
 alias dotfiles='cd /home/adrien/.dotfiles/'
+alias aur='cd /home/adrien/.aur/'
+alias cheatsheet='cd /home/adrien/.cheatsheets/'
+alias flashcard='cd /home/adrien/.flash-cards/'
 
 ######################
 #                AUR #
 #                    #
 ######################
 
-alias aur='cd /home/adrien/.aur/'
+
+######################
+#        CHEATSHEETS #
+#                    #
+######################
+
 
 ######################
 #               TERM #
