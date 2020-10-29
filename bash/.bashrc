@@ -352,7 +352,36 @@ export HISTFILESIZE=10000
 # Sourcing anything that shouldn't live on a git repo
 [[ -f $HOME/.bashrc.secret ]] && source $HOME/.bashrc.secret
 
-# Profiling bash startup (comment)
+######################
+#   DAY / NIGHT MODE #
+#                    #
+######################
+
+function nightmode () {
+	# vim colors
+	sed -i 's/colorscheme onehalflight/colorscheme onehalfdark/g' $HOME/.vimrc
+	# termite colors
+	cat $HOME/.dotfiles/termite/base > $HOME/.dotfiles/termite/config && \
+		cat $HOME/.dotfiles/termite/base16-one-dark.config >> $HOME/.dotfiles/termite/config
+	# reload termite
+	killall -USR1 termite
+}
+
+function daymode () {
+	# vim colors
+	sed -i 's/colorscheme onehalfdark/colorscheme onehalflight/g' $HOME/.vimrc
+	# termite colors
+	cat $HOME/.dotfiles/termite/base > $HOME/.dotfiles/termite/config && \
+		cat $HOME/.dotfiles/termite/base16-one-light.config >> $HOME/.dotfiles/termite/config
+	# reload termite
+	killall -USR1 termite
+}
+
+######################
+#     BASH PROFILING #
+#                    #
+######################
+
 # If you startup a new Bash session manually (i.e. bash -xl), you can see what is run on login.
 #PS4='+ $(date "+%s.%N")\011 '
 #set +x
