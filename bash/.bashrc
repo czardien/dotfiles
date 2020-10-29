@@ -21,18 +21,6 @@ alias cheatsheet='cd /home/adrien/.cheatsheets/'
 alias flashcard='cd /home/adrien/.flash-cards/'
 
 ######################
-#                AUR #
-#                    #
-######################
-
-
-######################
-#        CHEATSHEETS #
-#                    #
-######################
-
-
-######################
 #               TERM #
 #                    #
 ######################
@@ -46,8 +34,6 @@ export TERM=screen-256color
 
 # local
 export PATH=$PATH:$HOME/.local/bin
-# npm
-export PATH=$PATH:$HOME/adrien/.npm-global/bin
 # gem
 export PATH=$PATH:$HOME/.gem/ruby/2.7.0/bin
 
@@ -310,7 +296,17 @@ pyvenv-tear () {
 ######################
 
 # Use nvm if exists
-[ -f /usr/share/nvm/init-nvm.sh ] && source /usr/share/nvm/init-nvm.sh
+
+if ! command -v nvm &> /dev/null
+then
+	function nvm () {
+		echo "nvm command not found: run \`load_nvm\` maybe?"
+	}
+fi
+
+function load_nvm () {
+	[ -f /usr/share/nvm/init-nvm.sh ] && source /usr/share/nvm/init-nvm.sh
+}
 
 # Update NPM
 alias npmup="npm install -g npm"
@@ -370,6 +366,8 @@ function nightmode () {
 function daymode () {
 	# vim colors
 	sed -i 's/colorscheme onehalfdark/colorscheme onehalflight/g' $HOME/.vimrc
+	# bat colors
+	# gitconfig colors
 	# termite colors
 	cat $HOME/.dotfiles/termite/base > $HOME/.dotfiles/termite/config && \
 		cat $HOME/.dotfiles/termite/base16-one-light.config >> $HOME/.dotfiles/termite/config
@@ -383,6 +381,6 @@ function daymode () {
 ######################
 
 # If you startup a new Bash session manually (i.e. bash -xl), you can see what is run on login.
-#PS4='+ $(date "+%s.%N")\011 '
-#set +x
-#exec 2>&3 3>&-
+# PS4='+ $(date "+%s.%N")\011 '
+# set +x
+# exec 2>&3 3>&-
