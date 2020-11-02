@@ -28,6 +28,13 @@ alias flashcard='cd /home/adrien/.flash-cards/'
 export TERM=screen-256color
 
 ######################
+#           SHUTDOWN #
+#                    #
+######################
+
+alias shutdown-after-update="sudo pacman -Syu && shutdown now"
+
+######################
 #               PATH #
 #                    #
 ######################
@@ -50,6 +57,7 @@ export SYSTEMD_PAGER=cat
 ######################
 
 export BAT_THEME="OneHalfLight"
+export BAT_THEME="TwoDark"
 
 ######################
 #                PS1 #
@@ -295,8 +303,7 @@ pyvenv-tear () {
 #                    #
 ######################
 
-# Use nvm if exists
-
+# Lazy loading nvm
 if ! command -v nvm &> /dev/null
 then
 	function nvm () {
@@ -354,25 +361,34 @@ export HISTFILESIZE=10000
 ######################
 
 function nightmode () {
+	# bat colors
+	sed -i 's/export BAT_THEME="OneHalfLight"/export BAT_THEME="TwoDark"/g' $HOME/.vimrc
 	# vim colors
 	sed -i 's/colorscheme onehalflight/colorscheme onehalfdark/g' $HOME/.vimrc
 	# termite colors
 	cat $HOME/.dotfiles/termite/base > $HOME/.dotfiles/termite/config && \
 		cat $HOME/.dotfiles/termite/base16-one-dark.config >> $HOME/.dotfiles/termite/config
+
 	# reload termite
 	killall -USR1 termite
+	# reload bash session
+	source ~/.bashrc
 }
 
 function daymode () {
+	# TODO: gitconfig colors
+  # bat colors
+	sed -i 's/export BAT_THEME="TwoDark"/export BAT_THEME="OneHalfLight"/g' $HOME/.vimrc
 	# vim colors
 	sed -i 's/colorscheme onehalfdark/colorscheme onehalflight/g' $HOME/.vimrc
-	# bat colors
-	# gitconfig colors
 	# termite colors
 	cat $HOME/.dotfiles/termite/base > $HOME/.dotfiles/termite/config && \
 		cat $HOME/.dotfiles/termite/base16-one-light.config >> $HOME/.dotfiles/termite/config
+
 	# reload termite
 	killall -USR1 termite
+	# reload bash session
+	source ~/.bashrc
 }
 
 ######################

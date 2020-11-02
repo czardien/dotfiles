@@ -14,7 +14,6 @@
 "               `. --'-- .'
 "                 `-...-'                ~ Hi!
 "
-
 "
 " Create backup directory
 " mkdir -p ~/.vim/backup
@@ -38,10 +37,10 @@
 " Init Plug
 " :PlugInstall
 
-""""""""""""""""""""""
-"            PLUGINS "
-"                    "
-""""""""""""""""""""""
+"""""""""""""
+"   PLUGINS "
+"           "
+"""""""""""""
 
 " Maybe needed
 set nocompatible
@@ -83,41 +82,45 @@ call plug#end()
 " Pathogen thing
 execute pathogen#infect()
 
-""""""""""""""""""""""
-"             LEADER "
-"                    "
-""""""""""""""""""""""
+""""""""""""
+"   LEADER "
+"          "
+""""""""""""
 
 " Leader key
-let mapleader=","
+let mapleader=" "
 
-""""""""""""""""""""""
-"             SYNTAX "
-"                    "
-""""""""""""""""""""""
-"
+""""""""""""
+"   SYNTAX "
+"          "
+""""""""""""
+
 " Enable syntax checking
 syntax enable
 
-""""""""""""""""""""""
-"                ALE "
-"                    "
-""""""""""""""""""""""
+""""""""""""
+"      ALE "
+"          "
+""""""""""""
 
 let b:ale_fixers = {'sql': ['sqlint'], 'javascript': ['eslint'], 'typescript': ['eslint']}
 let b:ale_linters = {'sql': ['sqlint'], 'javascript': ['eslint'], 'typescript': ['eslint']}
 
-""""""""""""""""""""""
-"          LIGHTLINE "
-"                    "
-""""""""""""""""""""""
+set tabstop=2
+set shiftwidth=2
+set expandtab
+
+"""""""""""""""
+"   LIGHTLINE "
+"             "
+"""""""""""""""
 
 set laststatus=2
 
-""""""""""""""""""""""
-"       COLORSCHEMES "
-"                    "
-""""""""""""""""""""""
+""""""""""""""""""
+"   COLOR SCHEME "
+"                "
+""""""""""""""""""
 
 " Set terminal color
 set t_Co=256
@@ -131,87 +134,87 @@ colorscheme onehalfdark
 " Set lightline colorscheme!
 let g:lightline = { 'colorscheme': 'onehalfdark' }
 
-""""""""""""""""""""""
-"                FZF "
-"                    "
-""""""""""""""""""""""
+"""""""""
+"   FZF "
+"       "
+"""""""""
 
 " Make use of awesome fzf
 nnoremap <C-p> :Files<Cr>
 nnoremap <C-b> :Buffers<Cr>
 
-""""""""""""""""""""""
-"           ENCODING "
-"                    "
-""""""""""""""""""""""
+""""""""""""""
+"   ENCODING "
+"            "
+""""""""""""""
 
 " Encoding business
 set encoding=utf-8
 
-""""""""""""""""""""""
-"       LINE NUMBERS "
-"                    "
-""""""""""""""""""""""
+"""""""""""""""""
+"   LINE NUMBER "
+"               "
+"""""""""""""""""
 
 " Display line number
 set nu
 
-""""""""""""""""""""""
-"              SPLIT "
-"                    "
-""""""""""""""""""""""
+""""""""""""
+"   SPLITS "
+"          "
+""""""""""""
 
 " Make the new window appear below the current window
 set splitbelow
 " Make the new window appear on the right
 set splitright
 
-""""""""""""""""""""""
-"           RUST.VIM "
-"                    "
-""""""""""""""""""""""
+""""""""""""""
+"   RUST.VIM "
+"            "
+""""""""""""""
 
 " To run rustfmt on save
 let g:rustfmt_autosave = 1
 
-""""""""""""""""""""""
-"             BACKUP "
-"                    "
-""""""""""""""""""""""
+"""""""""""""""""
+"   BACKUP DIRS "
+"               "
+"""""""""""""""""
 
 " Ensures all Swap files end up in the same place; we don't pollute our
 " projects
 set backupdir=~/.vim/backup/
 set directory=~/.vim/backup/
 
-""""""""""""""""""""""
-"          CLIPBOARD "
-"                    "
-""""""""""""""""""""""
+"""""""""""""""
+"   CLIPBOARD "
+"             "
+"""""""""""""""
 
 " To make use of the system clipboard
 set clipboard=unnamed
 
-""""""""""""""""""""""
-"             SEARCH "
-"                    "
-""""""""""""""""""""""
+""""""""""""
+"   SEARCH "
+"          "
+""""""""""""
 
 " Making search prettier
 set hlsearch
 
-""""""""""""""""""""""
-"          BACKSPACE "
-"                    "
-""""""""""""""""""""""
+"""""""""""""""
+"   BACKSPACE "
+"             "
+"""""""""""""""
 
 " To get a nice backspace key that deletes over line breaks and indents
 set backspace=indent,eol,start
 
-""""""""""""""""""""""
-"                GUI "
-"                    "
-""""""""""""""""""""""
+"""""""""
+"   GUI "
+"       "
+"""""""""
 
 " Make sure to escape the spaces in the name properly
 set guifont=Source\ Code\ Pro\ for\ Powerline
@@ -228,7 +231,7 @@ autocmd BufWritePre * %s/\s\+$//e
 nnoremap U <C-R>
 
 " To disable search highlight using CTRL + o
-nnoremap <c-o> <c-o>:noh<cr>
+nnoremap <silent> <C-l> :nohl<CR><C-l>
 
 " For making enter inserting a newline
 nmap <S-Enter> O<Esc>
