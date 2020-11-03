@@ -228,34 +228,28 @@ alias dkv='docker volume ls -qf dangling=true | xargs docker volume rm'
 ######################
 
 # Make use of exa
-alias exa='exa --color always --group-directories-first'
+EXA_IGNORE_GLOB="*.pyc|*pycache*|.git|.idea|.pytest_cache|node_modules"
+EXA_OPTIONS="--color always --group-directories-first -T -I \"$EXA_IGNORE_GLOB\" -l --git"
 
 # Being clever when using exa
-alias l='exa --color always --group-directories-first -T -L 1 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
-alias ll='exa --color always --group-directories-first -T -L 2 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
-alias lll='exa --color always --group-directories-first -T -L 3 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
-alias llll='exa --color always --group-directories-first -T -L 4 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
+alias l="exa $EXA_OPTIONS -L 1"
+alias ll="exa $EXA_OPTIONS -L 2"
 # Alternative
-alias l2='exa --color always --group-directories-first -T -L 2 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
-alias l3='exa --color always --group-directories-first -T -L 3 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
-alias l4='exa --color always --group-directories-first -T -L 4 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
-alias l5='exa --color always --group-directories-first -T -L 5 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
-alias l6='exa --color always --group-directories-first -T -L 6 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
-alias l7='exa --color always --group-directories-first -T -L 7 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
-alias l8='exa --color always --group-directories-first -T -L 8 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
-alias l9='exa --color always --group-directories-first -T -L 9 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
+alias l1="exa $EXA_OPTIONS -L 1"
+alias l2="exa $EXA_OPTIONS -L 2"
+alias l3="exa $EXA_OPTIONS -L 3"
+alias l4="exa $EXA_OPTIONS -L 4"
+alias l5="exa $EXA_OPTIONS -L 5"
 
 # Showing everything
-alias la='exa --color always --group-directories-first -T -L 1 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git -a'
-alias lla='exa --color always --group-directories-first -T -L 2 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git -a'
-alias llla='exa --color always --group-directories-first -T -L 3 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git -a'
-alias lllla='exa --color always --group-directories-first -T -L 4 -l --git -a'
+alias la="exa $EXA_OPTIONS -L 1 -a"
+alias lla="exa $EXA_OPTIONS -L 2 -a"
 # Showing everything; alternative
-alias l2a='exa --color always --group-directories-first -T -L 2 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git -a'
-alias l3a='exa --color always --group-directories-first -T -L 3 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git -a'
-alias l4a='exa --color always --group-directories-first -T -L 4 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git -a'
-alias l5a='exa --color always --group-directories-first -T -L 4 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git -a'
-alias l6a='exa --color always --group-directories-first -T -L 4 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git -a'
+alias l1a="exa $EXA_OPTIONS -L 1 -a"
+alias l2a="exa $EXA_OPTIONS -L 2 -a"
+alias l3a="exa $EXA_OPTIONS -L 3 -a"
+alias l4a="exa $EXA_OPTIONS -L 4 -a"
+alias l5a="exa $EXA_OPTIONS -L 5 -a"
 
 ######################
 #             PYTHON #
