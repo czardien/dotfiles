@@ -18,7 +18,7 @@
 alias dotfiles='cd /home/adrien/.dotfiles/'
 alias aur='cd /home/adrien/.aur/'
 alias cheatsheet='cd /home/adrien/.cheatsheets/'
-alias flashcard='cd /home/adrien/.flash-cards/'
+alias systemd-unit-files='cd /home/adrien/.systemd-unit-files/'
 
 ######################
 #               TERM #
@@ -356,9 +356,9 @@ export HISTFILESIZE=10000
 
 function nightmode () {
 	# bat colors
-	sed -i 's/export BAT_THEME="OneHalfLight"/export BAT_THEME="TwoDark"/g' $HOME/.vimrc
+	sed --follow-symlinks -i 's/export BAT_THEME="OneHalfLight"/export BAT_THEME="TwoDark"/g' $HOME/.vimrc
 	# vim colors
-	sed -i 's/colorscheme onehalflight/colorscheme onehalfdark/g' $HOME/.vimrc
+	sed --follow-symlinks -i 's/colorscheme onehalflight/colorscheme onehalfdark/g' $HOME/.vimrc
 	# termite colors
 	cat $HOME/.dotfiles/termite/base > $HOME/.dotfiles/termite/config && \
 		cat $HOME/.dotfiles/termite/base16-one-dark.config >> $HOME/.dotfiles/termite/config
@@ -372,9 +372,9 @@ function nightmode () {
 function daymode () {
 	# TODO: gitconfig colors
   # bat colors
-	sed -i 's/export BAT_THEME="TwoDark"/export BAT_THEME="OneHalfLight"/g' $HOME/.vimrc
+	sed --follow-symlinks -i 's/export BAT_THEME="TwoDark"/export BAT_THEME="OneHalfLight"/g' $HOME/.vimrc
 	# vim colors
-	sed -i 's/colorscheme onehalfdark/colorscheme onehalflight/g' $HOME/.vimrc
+	sed --follow-symlinks -i 's/colorscheme onehalfdark/colorscheme onehalflight/g' $HOME/.vimrc
 	# termite colors
 	cat $HOME/.dotfiles/termite/base > $HOME/.dotfiles/termite/config && \
 		cat $HOME/.dotfiles/termite/base16-one-light.config >> $HOME/.dotfiles/termite/config
