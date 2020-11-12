@@ -8,7 +8,7 @@
 #     \   | .  .==.  . |   /
 #      '._ \.' \__/ './ _.'
 #      /  ``'._-''-_.'``  \
-
+#
 
 ######################
 #              UTILS #
@@ -163,8 +163,9 @@ alias ..5="cd ../../../../.."
 
 # Make git awesome
 alias gs="git status"
-alias gd="git diff"
 alias gp="git pull"
+alias gd="git diff"
+alias gdmaster="git diff master..$(git rev-parse --abbrev-ref HEAD)"
 alias gl="git log"
 alias glone10="git log --oneline -10"
 
