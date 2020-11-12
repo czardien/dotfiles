@@ -165,6 +165,8 @@ alias ..5="cd ../../../../.."
 alias gs="git status"
 alias gd="git diff"
 alias gp="git pull"
+alias gl="git log"
+alias glone10="git log --oneline -10"
 
 # Making git super cool
 alias master="git checkout master"
@@ -172,7 +174,7 @@ alias master="git checkout master"
 # Make git FZF kind of awesome
 function gb() {
   local br
-  br=$(git branch | fzf | awk '{printf "%s\n", $2}')
+  br=$(git branch | fzf | awk '{printf "%s\n", $1}')
   git checkout "$br"
 }
 
