@@ -88,7 +88,7 @@ function __pyvenv_ps1 () {
 }
 
 set_bash_prompt(){
-    PS1="$(__pyvenv_ps1)\[\033[1;36m\]\w\[\033[m\] \[\033[1;37m\]❯\[\033[m\]$(__git_ps1)$(__suffix_ps1)"
+    PS1="$(__pyvenv_ps1)\[\033[1;35m\]\h\[\033[m\] \[\033[1;37m\]❯\[\033[m\] \[\033[1;36m\]\w\[\033[m\] \[\033[1;37m\]❯\[\033[m\]$(__git_ps1)$(__suffix_ps1)"
 }
 
 PROMPT_COMMAND=set_bash_prompt
@@ -165,12 +165,15 @@ alias ..5="cd ../../../../.."
 alias gs="git status"
 alias gp="git pull"
 alias gd="git diff"
-alias gdmaster="git diff master..$(git rev-parse --abbrev-ref HEAD)"
 alias gl="git log"
 alias glone10="git log --oneline -10"
 
 # Making git super cool
 alias master="git checkout master"
+
+function gdmaster() {
+  git diff master..$(git rev-parse --abbrev-ref HEAD)
+}
 
 # Make git FZF kind of awesome
 function gb() {
