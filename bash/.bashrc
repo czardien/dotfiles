@@ -15,9 +15,11 @@
 #                    #
 ######################
 
-alias dotfiles='cd /home/adrien/.dotfiles/'
 alias aur='cd /home/adrien/.aur/'
-alias cheatsheet='cd /home/adrien/.cheatsheets/'
+alias vimrc='vim /home/adrien/.dotfiles/vim/.vimrc'
+alias bashrc='vim /home/adrien/.dotfiles/bash/.bashrc'
+alias dotfiles='cd /home/adrien/.dotfiles/'
+alias cards='cd /home/adrien/.cards/'
 alias systemd-unit-files='cd /home/adrien/.systemd-unit-files/'
 
 ######################
@@ -344,18 +346,6 @@ export CHEAT_USE_FZF=true
     . /usr/share/bash-completion/bash_completion
 
 ######################
-#  BASH MAINTAINANCE #
-#                    #
-######################
-
-# Setting much more appropriate history size limit and file size
-export HISTSIZE=10000
-export HISTFILESIZE=10000
-
-# Sourcing anything that shouldn't live on a git repo
-[[ -f $HOME/.bashrc.secret ]] && source $HOME/.bashrc.secret
-
-######################
 #   DAY / NIGHT MODE #
 #                    #
 ######################
@@ -390,6 +380,29 @@ function daymode () {
 	# reload bash session
 	source ~/.bashrc
 }
+
+
+######################
+#        CHEATSHEETS #
+#                    #
+######################
+
+function card () {
+  # Write a script here that opens vim, git commit and git push cheatsheets
+  echo "caarrd"
+}
+
+######################
+#  BASH MAINTAINANCE #
+#                    #
+######################
+
+# Setting much more appropriate history size limit and file size
+export HISTSIZE=10000
+export HISTFILESIZE=10000
+
+# Sourcing anything that shouldn't live on a git repo
+[[ -f $HOME/.bashrc.secret ]] && source $HOME/.bashrc.secret
 
 ######################
 #     BASH PROFILING #
