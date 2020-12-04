@@ -8,28 +8,19 @@
 #     \   | .  .==.  . |   /
 #      '._ \.' \__/ './ _.'
 #      /  ``'._-''-_.'``  \
-
-
-######################
-#           DOTFILES #
-#                    #
-######################
-
-alias dotfiles='cd /home/adrien/.dotfiles/'
+#
 
 ######################
-#                AUR #
+#              UTILS #
 #                    #
 ######################
 
 alias aur='cd /home/adrien/.aur/'
-
-######################
-#        CHEATSHEETS #
-#                    #
-######################
-
-alias cheatsheets='cd /home/adrien/.cheatsheets/'
+alias vimrc='vim /home/adrien/.dotfiles/vim/.vimrc'
+alias bashrc='vim /home/adrien/.dotfiles/bash/.bashrc'
+alias dotfiles='cd /home/adrien/.dotfiles/'
+alias cards='cd /home/adrien/.cards/'
+alias systemd-unit-files='cd /home/adrien/.systemd-unit-files/'
 
 ######################
 #               TERM #
@@ -39,14 +30,19 @@ alias cheatsheets='cd /home/adrien/.cheatsheets/'
 export TERM=screen-256color
 
 ######################
+#           SHUTDOWN #
+#                    #
+######################
+
+alias shutdown-after-update="sudo pacman -Syu && shutdown now"
+
+######################
 #               PATH #
 #                    #
 ######################
 
 # local
 export PATH=$PATH:$HOME/.local/bin
-# npm
-export PATH=$PATH:$HOME/adrien/.npm-global/bin
 # gem
 export PATH=$PATH:$HOME/.gem/ruby/2.7.0/bin
 
@@ -63,6 +59,7 @@ export SYSTEMD_PAGER=cat
 ######################
 
 export BAT_THEME="OneHalfLight"
+export BAT_THEME="TwoDark"
 
 ######################
 #                PS1 #
@@ -93,7 +90,7 @@ function __pyvenv_ps1 () {
 }
 
 set_bash_prompt(){
-    PS1="$(__pyvenv_ps1)\[\033[1;36m\]\w\[\033[m\] \[\033[1;37m\]❯\[\033[m\]$(__git_ps1)$(__suffix_ps1)"
+    PS1="$(__pyvenv_ps1)\[\033[1;35m\]\h\[\033[m\] \[\033[1;37m\]❯\[\033[m\] \[\033[1;36m\]\w\[\033[m\] \[\033[1;37m\]❯\[\033[m\]$(__git_ps1)$(__suffix_ps1)"
 }
 
 PROMPT_COMMAND=set_bash_prompt
@@ -168,16 +165,22 @@ alias ..5="cd ../../../../.."
 
 # Make git awesome
 alias gs="git status"
-alias gd="git diff"
 alias gp="git pull"
+alias gd="git diff"
+alias gl="git log"
+alias glone10="git log --oneline -10"
 
 # Making git super cool
 alias master="git checkout master"
 
+function gdmaster() {
+  git diff master..$(git rev-parse --abbrev-ref HEAD)
+}
+
 # Make git FZF kind of awesome
 function gb() {
   local br
-  br=$(git branch | fzf | awk '{printf "%s\n", $2}')
+  br=$(git branch | fzf | awk '{printf "%s\n", $1}')
   git checkout "$br"
 }
 
@@ -233,34 +236,28 @@ alias dkv='docker volume ls -qf dangling=true | xargs docker volume rm'
 ######################
 
 # Make use of exa
-alias exa='exa --color always --group-directories-first'
+EXA_IGNORE_GLOB="*.pyc|*pycache*|.git|.idea|.pytest_cache|node_modules"
+EXA_OPTIONS="--color always --group-directories-first -T -I \"$EXA_IGNORE_GLOB\" -l --git"
 
 # Being clever when using exa
-alias l='exa --color always --group-directories-first -T -L 1 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
-alias ll='exa --color always --group-directories-first -T -L 2 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
-alias lll='exa --color always --group-directories-first -T -L 3 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
-alias llll='exa --color always --group-directories-first -T -L 4 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
+alias l="exa $EXA_OPTIONS -L 1"
+alias ll="exa $EXA_OPTIONS -L 2"
 # Alternative
-alias l2='exa --color always --group-directories-first -T -L 2 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
-alias l3='exa --color always --group-directories-first -T -L 3 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
-alias l4='exa --color always --group-directories-first -T -L 4 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
-alias l5='exa --color always --group-directories-first -T -L 5 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
-alias l6='exa --color always --group-directories-first -T -L 6 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
-alias l7='exa --color always --group-directories-first -T -L 7 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
-alias l8='exa --color always --group-directories-first -T -L 8 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
-alias l9='exa --color always --group-directories-first -T -L 9 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git'
+alias l1="exa $EXA_OPTIONS -L 1"
+alias l2="exa $EXA_OPTIONS -L 2"
+alias l3="exa $EXA_OPTIONS -L 3"
+alias l4="exa $EXA_OPTIONS -L 4"
+alias l5="exa $EXA_OPTIONS -L 5"
 
 # Showing everything
-alias la='exa --color always --group-directories-first -T -L 1 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git -a'
-alias lla='exa --color always --group-directories-first -T -L 2 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git -a'
-alias llla='exa --color always --group-directories-first -T -L 3 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git -a'
-alias lllla='exa --color always --group-directories-first -T -L 4 -l --git -a'
+alias la="exa $EXA_OPTIONS -L 1 -a"
+alias lla="exa $EXA_OPTIONS -L 2 -a"
 # Showing everything; alternative
-alias l2a='exa --color always --group-directories-first -T -L 2 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git -a'
-alias l3a='exa --color always --group-directories-first -T -L 3 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git -a'
-alias l4a='exa --color always --group-directories-first -T -L 4 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git -a'
-alias l5a='exa --color always --group-directories-first -T -L 4 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git -a'
-alias l6a='exa --color always --group-directories-first -T -L 4 -I "*.pyc|*pycache*|.git|.idea|.pytest_cache" -l --git -a'
+alias l1a="exa $EXA_OPTIONS -L 1 -a"
+alias l2a="exa $EXA_OPTIONS -L 2 -a"
+alias l3a="exa $EXA_OPTIONS -L 3 -a"
+alias l4a="exa $EXA_OPTIONS -L 4 -a"
+alias l5a="exa $EXA_OPTIONS -L 5 -a"
 
 ######################
 #             PYTHON #
@@ -308,6 +305,18 @@ pyvenv-tear () {
 #                    #
 ######################
 
+# Lazy loading nvm
+if ! command -v nvm &> /dev/null
+then
+	function nvm () {
+		echo "nvm command not found: run \`load_nvm\` maybe?"
+	}
+fi
+
+function load_nvm () {
+	[ -f /usr/share/nvm/init-nvm.sh ] && source /usr/share/nvm/init-nvm.sh
+}
+
 # Update NPM
 alias npmup="npm install -g npm"
 
@@ -337,6 +346,53 @@ export CHEAT_USE_FZF=true
     . /usr/share/bash-completion/bash_completion
 
 ######################
+#   DAY / NIGHT MODE #
+#                    #
+######################
+
+function nightmode () {
+	# bat colors
+	sed --follow-symlinks -i 's/export BAT_THEME="OneHalfLight"/export BAT_THEME="TwoDark"/g' $HOME/.vimrc
+	# vim colors
+	sed --follow-symlinks -i 's/colorscheme onehalflight/colorscheme onehalfdark/g' $HOME/.vimrc
+	# termite colors
+	cat $HOME/.dotfiles/termite/base > $HOME/.dotfiles/termite/config && \
+		cat $HOME/.dotfiles/termite/base16-one-dark.config >> $HOME/.dotfiles/termite/config
+
+	# reload termite
+	killall -USR1 termite
+	# reload bash session
+	source ~/.bashrc
+}
+
+function daymode () {
+	# TODO: gitconfig colors
+  # bat colors
+	sed --follow-symlinks -i 's/export BAT_THEME="TwoDark"/export BAT_THEME="OneHalfLight"/g' $HOME/.vimrc
+	# vim colors
+	sed --follow-symlinks -i 's/colorscheme onehalfdark/colorscheme onehalflight/g' $HOME/.vimrc
+	# termite colors
+	cat $HOME/.dotfiles/termite/base > $HOME/.dotfiles/termite/config && \
+		cat $HOME/.dotfiles/termite/base16-one-light.config >> $HOME/.dotfiles/termite/config
+
+	# reload termite
+	killall -USR1 termite
+	# reload bash session
+	source ~/.bashrc
+}
+
+
+######################
+#        CHEATSHEETS #
+#                    #
+######################
+
+function card () {
+  # Write a script here that opens vim, git commit and git push cheatsheets
+  echo "caarrd"
+}
+
+######################
 #  BASH MAINTAINANCE #
 #                    #
 ######################
@@ -348,8 +404,12 @@ export HISTFILESIZE=10000
 # Sourcing anything that shouldn't live on a git repo
 [[ -f $HOME/.bashrc.secret ]] && source $HOME/.bashrc.secret
 
-# Profiling bash startup (comment)
+######################
+#     BASH PROFILING #
+#                    #
+######################
+
 # If you startup a new Bash session manually (i.e. bash -xl), you can see what is run on login.
-#PS4='+ $(date "+%s.%N")\011 '
-#set +x
-#exec 2>&3 3>&-
+# PS4='+ $(date "+%s.%N")\011 '
+# set +x
+# exec 2>&3 3>&-

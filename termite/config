@@ -40,101 +40,51 @@ scrollback_lines = 10000
 # "off", "left" or "right"
 #scrollbar = off
 [colors]
-# Base16 Atelier Cave Light
-# Author: Bram de Haan (http://atelierbramdehaan.nl)
+# Base16 One Light
+# Author: Daniel Pfeifer (http://github.com/purpleKarrot)
 
-foreground          = #585260
-foreground_bold     = #585260
-cursor              = #585260
-cursor_foreground   = #efecf4
-background          = #efecf4
-
-# 16 color space
-
-# Black, Gray, Silver, White
-color0  = #efecf4
-color8  = #7e7887
-color7  = #585260
-color15 = #19171c
-
-# Red
-color1  = #be4678
-color9  = #be4678
-
-# Green
-color2  = #2a9292
-color10 = #2a9292
-
-# Yellow
-color3  = #a06e3b
-color11 = #a06e3b
-
-# Blue
-color4  = #576ddb
-color12 = #576ddb
-
-# Purple
-color5  = #955ae7
-color13 = #955ae7
-
-# Teal
-color6  = #398bc6
-color14 = #398bc6
-
-# Extra colors
-color16 = #aa573c
-color17 = #bf40bf
-color18 = #e2dfe7
-color19 = #8b8792
-color20 = #655f6d
-color21 = #26232a
-
-[colors]
-# Base16 Atelier Dune Light
-# Author: Bram de Haan (http://atelierbramdehaan.nl)
-
-foreground          = #6e6b5e
-foreground_bold     = #6e6b5e
-cursor              = #6e6b5e
-cursor_foreground   = #fefbec
-background          = #fefbec
+foreground          = #383a42
+foreground_bold     = #383a42
+cursor              = #383a42
+cursor_foreground   = #fafafa
+background          = #fafafa
 
 # 16 color space
 
 # Black, Gray, Silver, White
-color0  = #fefbec
-color8  = #999580
-color7  = #6e6b5e
-color15 = #20201d
+color0  = #fafafa
+color8  = #a0a1a7
+color7  = #383a42
+color15 = #090a0b
 
 # Red
-color1  = #d73737
-color9  = #d73737
+color1  = #ca1243
+color9  = #ca1243
 
 # Green
-color2  = #60ac39
-color10 = #60ac39
+color2  = #50a14f
+color10 = #50a14f
 
 # Yellow
-color3  = #ae9513
-color11 = #ae9513
+color3  = #c18401
+color11 = #c18401
 
 # Blue
-color4  = #6684e1
-color12 = #6684e1
+color4  = #4078f2
+color12 = #4078f2
 
 # Purple
-color5  = #b854d4
-color13 = #b854d4
+color5  = #a626a4
+color13 = #a626a4
 
 # Teal
-color6  = #1fad83
-color14 = #1fad83
+color6  = #0184bc
+color14 = #0184bc
 
 # Extra colors
-color16 = #b65611
-color17 = #d43552
-color18 = #e8e4cf
-color19 = #a6a28c
-color20 = #7d7a68
-color21 = #292824
+color16 = #d75f00
+color17 = #986801
+color18 = #f0f0f1
+color19 = #e5e5e6
+color20 = #696c77
+color21 = #202227
