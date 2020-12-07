@@ -11,9 +11,27 @@
 #
 
 ######################
+#             EDITOR #
+#                    #
+######################
+
+export EDITOR=vim
+
+######################
 #              UTILS #
 #                    #
 ######################
+
+function commit_dotfiles() {
+	cd /home/adrien/.dotfiles &&
+	LANG=C git -c color.status=false status \
+		| sed -n -r -e '1,/Changes to be committed:/ d' \
+	            -e '1,1 d' \
+	            -e '/^Untracked files:/,$ d' \
+	            -e 's/^\s*//' \
+	            -e '/./p' \
+		| git commit -F -
+}
 
 alias aur='cd /home/adrien/.aur/'
 alias vimrc='vim /home/adrien/.dotfiles/vim/.vimrc'
@@ -306,16 +324,17 @@ pyvenv-tear () {
 ######################
 
 # Lazy loading nvm
-if ! command -v nvm &> /dev/null
-then
-	function nvm () {
-		echo "nvm command not found: run \`load_nvm\` maybe?"
-	}
-fi
-
 function load_nvm () {
 	[ -f /usr/share/nvm/init-nvm.sh ] && source /usr/share/nvm/init-nvm.sh
 }
+
+if ! command -v nvm &> /dev/null
+then
+	function nvm () {
+    load_nvm
+    nvm "$@"
+	}
+fi
 
 # Update NPM
 alias npmup="npm install -g npm"
