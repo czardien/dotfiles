@@ -35,9 +35,10 @@ function commit_dotfiles() {
 
 alias aur='cd /home/adrien/.aur/'
 alias vimrc='vim /home/adrien/.dotfiles/vim/.vimrc'
+alias cards='cd /home/adrien/.cards/'
+alias gists='cd /home/adrien/.gists/'
 alias bashrc='vim /home/adrien/.dotfiles/bash/.bashrc'
 alias dotfiles='cd /home/adrien/.dotfiles/'
-alias cards='cd /home/adrien/.cards/'
 alias systemd-unit-files='cd /home/adrien/.systemd-unit-files/'
 
 ######################
