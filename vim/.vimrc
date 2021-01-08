@@ -70,6 +70,8 @@ Plug 'junegunn/goyo.vim'
 Plug 'dense-analysis/ale'
 " Rust
 Plug 'rust-lang/rust.vim'
+" jq
+Plug 'bfrg/vim-jqplay'
 call plug#end()
 
 " Pathogen thing

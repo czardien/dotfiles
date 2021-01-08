@@ -278,6 +278,18 @@ alias l3a="exa $EXA_OPTIONS -L 3 -a"
 alias l4a="exa $EXA_OPTIONS -L 4 -a"
 alias l5a="exa $EXA_OPTIONS -L 5 -a"
 
+# Watch current working directory
+alias wcwd="watch -n 0.5 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 1'"
+alias wcwd2="watch -n 0.5 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 2'"
+alias wcwd3="watch -n 0.5 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 3'"
+alias wcwd4="watch -n 0.5 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 4'"
+alias wcwd5="watch -n 0.5 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 5'"
+alias wcwda="watch -n 0.5 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 1 -a'"
+alias wcwd2a="watch -n 0.5 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 2 -a'"
+alias wcwd3a="watch -n 0.5 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 3 -a'"
+alias wcwd4a="watch -n 0.5 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 4 -a'"
+alias wcwd5a="watch -n 0.5 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 5 -a'"
+
 ######################
 #             PYTHON #
 #                    #
