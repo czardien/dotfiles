@@ -187,16 +187,18 @@ alias gs="git status"
 alias gp="git pull"
 alias gd="git diff"
 alias gl="git log"
-alias glone10="git log --oneline -10"
+alias glog="git log --oneline -10"
+alias glog20="git log --oneline -20"
 
 # Making git super cool
 alias master="git checkout master"
 
+# See diff with master
 function gdmaster() {
   git diff master..$(git rev-parse --abbrev-ref HEAD)
 }
 
-# Make git FZF kind of awesome
+# Make git FZF kind of awesome but is broken really
 function gb() {
   local br
   br=$(git branch | fzf | awk '{printf "%s\n", $1}')
@@ -221,30 +223,13 @@ function gr () {
   $prgr $git_url &> /dev/null
 }
 
-# Goes over the given directory and looks for modifications in git repositories
-function ggotobed () {
-  local path allrepos repo proj changes controller
-  path=$1
-  [ -n "$1" ] || path="."
-  allrepos=$(fd --hidden --type d ".git" $path)
-  controller=true
-  for repo in $allrepos
-  do
-    proj=$(dirname "$repo")
-    changes=$(cd "$proj" && git status --porcelain)
-    [ -n "$changes" ] && echo "[ X ][ $(echo "$path/$proj" | tr -s '//' '/') ]"
-    [ -n "$changes" ] && controller=false
-  done
-  [ "$controller" = "true" ] && echo "[ V ] Go to bed!"
-}
-
 ######################
 #             DOCKER #
 #                    #
 ######################
 
 # Make docker awesome
-alias dka='dkc;dki;dkv'
+alias dka='dkc && dki && dkv'
 alias dkc='docker ps -aq | xargs docker rm -f'
 alias dki='docker images -aq | xargs docker rmi -f'
 alias dkv='docker volume ls -qf dangling=true | xargs docker volume rm'
@@ -255,8 +240,8 @@ alias dkv='docker volume ls -qf dangling=true | xargs docker volume rm'
 ######################
 
 # Make use of exa
-EXA_IGNORE_GLOB="*.pyc|*pycache*|.git|.idea|.pytest_cache|node_modules"
-EXA_OPTIONS="--color always --group-directories-first -T -I \"$EXA_IGNORE_GLOB\" -l --git"
+EXA_IGNORE_BLOB="*.pyc|*pycache*|.git|.idea|.pytest_cache|node_modules"
+EXA_OPTIONS="--color always --group-directories-first -T -I \"$EXA_IGNORE_BLOB\" -l --git"
 
 # Being clever when using exa
 alias l="exa $EXA_OPTIONS -L 1"
@@ -278,12 +263,13 @@ alias l3a="exa $EXA_OPTIONS -L 3 -a"
 alias l4a="exa $EXA_OPTIONS -L 4 -a"
 alias l5a="exa $EXA_OPTIONS -L 5 -a"
 
-# Watch current working directory
+# Watch current working directory with exa
 alias wcwd="watch -n 0.5 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 1'"
 alias wcwd2="watch -n 0.5 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 2'"
 alias wcwd3="watch -n 0.5 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 3'"
 alias wcwd4="watch -n 0.5 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 4'"
 alias wcwd5="watch -n 0.5 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 5'"
+
 alias wcwda="watch -n 0.5 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 1 -a'"
 alias wcwd2a="watch -n 0.5 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 2 -a'"
 alias wcwd3a="watch -n 0.5 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 3 -a'"
@@ -413,7 +399,6 @@ function daymode () {
 	source ~/.bashrc
 }
 
-
 ######################
 #        CHEATSHEETS #
 #                    #
@@ -421,7 +406,7 @@ function daymode () {
 
 function card () {
   # Write a script here that opens vim, git commit and git push cheatsheets
-  echo "caarrd"
+  echo "IMPLEMENT ME"
 }
 
 ######################
