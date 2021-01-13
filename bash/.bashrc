@@ -42,6 +42,18 @@ alias dotfiles='cd /home/adrien/.dotfiles/'
 alias systemd-unit-files='cd /home/adrien/.systemd-unit-files/'
 
 ######################
+#       DOTENV FILES #
+#                    #
+######################
+
+function load_dotenv() {
+  if [[ -f "./.env" ]]
+  then
+    set -o allexport; source "./.env"; set +o allexport
+  fi
+}
+
+######################
 #               TERM #
 #                    #
 ######################
@@ -240,7 +252,7 @@ alias dkv='docker volume ls -qf dangling=true | xargs docker volume rm'
 ######################
 
 # Make use of exa
-EXA_IGNORE_BLOB="*.pyc|*pycache*|.git|.idea|.pytest_cache|node_modules"
+EXA_IGNORE_BLOB="*.pyc|*pycache*|.git|.idea|.pytest_cache|node_modules|.venv"
 EXA_OPTIONS="--color always --group-directories-first -T -I \"$EXA_IGNORE_BLOB\" -l --git"
 
 # Being clever when using exa
@@ -264,17 +276,17 @@ alias l4a="exa $EXA_OPTIONS -L 4 -a"
 alias l5a="exa $EXA_OPTIONS -L 5 -a"
 
 # Watch current working directory with exa
-alias wcwd="watch -n 0.5 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 1'"
-alias wcwd2="watch -n 0.5 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 2'"
-alias wcwd3="watch -n 0.5 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 3'"
-alias wcwd4="watch -n 0.5 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 4'"
-alias wcwd5="watch -n 0.5 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 5'"
+alias wcwd="watch -n 0.1 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 1'"
+alias wcwd2="watch -n 0.1 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 2'"
+alias wcwd3="watch -n 0.1 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 3'"
+alias wcwd4="watch -n 0.1 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 4'"
+alias wcwd5="watch -n 0.1 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 5'"
 
-alias wcwda="watch -n 0.5 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 1 -a'"
-alias wcwd2a="watch -n 0.5 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 2 -a'"
-alias wcwd3a="watch -n 0.5 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 3 -a'"
-alias wcwd4a="watch -n 0.5 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 4 -a'"
-alias wcwd5a="watch -n 0.5 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 5 -a'"
+alias wcwda="watch -n 0.1 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 1 -a'"
+alias wcwd2a="watch -n 0.1 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 2 -a'"
+alias wcwd3a="watch -n 0.1 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 3 -a'"
+alias wcwd4a="watch -n 0.1 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 4 -a'"
+alias wcwd5a="watch -n 0.1 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 5 -a'"
 
 ######################
 #             PYTHON #
