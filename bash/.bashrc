@@ -22,61 +22,69 @@ export EDITOR=vim
 #                    #
 ######################
 
-function commit_dotfiles() {
-	cd /home/adrien/.dotfiles &&
-	LANG=C git -c color.status=false status \
-		| sed -n -r -e '1,/Changes to be committed:/ d' \
-	            -e '1,1 d' \
-	            -e '/^Untracked files:/,$ d' \
-	            -e 's/^\s*//' \
-	            -e '/./p' \
-		| git commit -F -
-}
-
 NOTES_HOME=$HOME/.notes
 
 alias aur='cd /home/adrien/.aur/'
 alias vimrc='vim /home/adrien/.dotfiles/vim/.vimrc'
-alias cards='cd /home/adrien/.cards/'
-alias gists='cd /home/adrien/.gists/'
 alias bashrc='vim /home/adrien/.dotfiles/bash/.bashrc'
 alias dotfiles='cd /home/adrien/.dotfiles/'
 alias systemd-unit-files='cd /home/adrien/.systemd-unit-files/'
 
-function gist() {
-  local gist
+
+######################
+#              NOTES #
+#                    #
+######################
+
+function notes() {
+  local note
   cd $NOTES_HOME
+  note=$(find . -type f -name "*note*" | \
+    sed 's/^\.\///g' | \
+    fzf --preview 'bat --color always {}')
+  $EDITOR $note
+  cd - > /dev/null
+}
 
+function cards() {
+  local card
+  cd $NOTES_HOME
+  card=$(find . -type f -name "*card*" | \
+    sed 's/^\.\///g' | \
+    fzf --preview 'bat --color always {}')
+  $EDITOR $card
+  cd - > /dev/null
+}
+
+function gist() {
+  local gist copy
+  copy=false
+  cd $NOTES_HOME
   # check arguments
-  if [[ $# == 1 ]] && [[ ! $1 == -c ]]; then
-    echo "error: argument $1 not recognised"
-    echo ""
-    echo "usage: gist [-c]"
-    echo "options: -c"
-    echo "          Copies content of gist to clipboard"
-    return 1
+  if [[ $# == 1 ]]; then
+    if [[ ! $1 == -c ]]; then
+      echo "error: argument $1 not recognised"
+      echo ""
+      echo "usage: gist [-c]"
+      echo "options: -c"
+      echo "          Copies content of gist to clipboard"
+      return 1
+    else
+      copy=true
+    fi
   fi
-
+  # find files
   gist=$(find . -type f -name "*gist*" | \
     sed 's/^\.\///g' | \
     fzf --preview 'bat --color always {}')
-
-  if [[ $# == 1 ]]; then
-    if [[ $1 == -c ]]; then
-      cat $gist | xclip -sel clip
-      echo "'$gist' copied to clipboard"
-    fi
+  # open or copy
+  if [[ $copy == "true" ]]; then
+    cat $gist | xclip -sel clip
+    echo "'$gist' copied to clipboard"
   else
     $EDITOR $gist
   fi
   cd - > /dev/null
-}
-
-function pd() {
-  local dirname
-  dirname=$1
-  echo $dirname
-  ls -1 $dirname | fzf --preview 'bat --color always $dirname/{}'
 }
 
 ######################
@@ -186,6 +194,7 @@ alias preview="fzf --preview 'bat --color always {}'"
 [ -f /usr/share/fzf/key-bindings.bash ] && source /usr/share/fzf/key-bindings.bash || echo -e "Warning: /usr/share/fzf/key-bindings.bash not found"
 [ -f /usr/share/fzf/completion.bash ] && source /usr/share/fzf/completion.bash || echo -e "Warning: /usr/share/fzf/completion.bash not found"
 
+# Setting preview git logs with fzf
 ######################
 #                X11 #
 #                    #
@@ -239,7 +248,7 @@ alias gs="git status"
 alias gp="git pull"
 alias gd="git diff"
 alias gl="git log"
-alias glog="git log --oneline -10"
+alias glog="git log --oneline | fzf --multi --preview 'git show {+1}'"
 alias glog20="git log --oneline -20"
 
 # Making git super cool
@@ -452,13 +461,15 @@ function daymode () {
 }
 
 ######################
-#        CHEATSHEETS #
+#              UTILS #
 #                    #
 ######################
 
-function card () {
-  # Write a script here that opens vim, git commit and git push cheatsheets
-  echo "IMPLEMENT ME"
+function previewdir() {
+  local dirname
+  dirname=$1
+  echo $dirname
+  ls -1 $dirname | fzf --preview 'bat --color always $dirname/{}'
 }
 
 ######################
