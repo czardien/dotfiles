@@ -54,6 +54,8 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 " Use LightLine
 Plugin 'itchyny/lightline.vim'
+" Use Vim-Man
+Plugin 'vim-utils/vim-man'
 call vundle#end()
 
 filetype plugin indent on

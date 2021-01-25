@@ -33,6 +33,8 @@ function commit_dotfiles() {
 		| git commit -F -
 }
 
+NOTES_HOME=$HOME/.notes
+
 alias aur='cd /home/adrien/.aur/'
 alias vimrc='vim /home/adrien/.dotfiles/vim/.vimrc'
 alias cards='cd /home/adrien/.cards/'
@@ -40,6 +42,42 @@ alias gists='cd /home/adrien/.gists/'
 alias bashrc='vim /home/adrien/.dotfiles/bash/.bashrc'
 alias dotfiles='cd /home/adrien/.dotfiles/'
 alias systemd-unit-files='cd /home/adrien/.systemd-unit-files/'
+
+function gist() {
+  local gist
+  cd $NOTES_HOME
+
+  # check arguments
+  if [[ $# == 1 ]] && [[ ! $1 == -c ]]; then
+    echo "error: argument $1 not recognised"
+    echo ""
+    echo "usage: gist [-c]"
+    echo "options: -c"
+    echo "          Copies content of gist to clipboard"
+    return 1
+  fi
+
+  gist=$(find . -type f -name "*gist*" | \
+    sed 's/^\.\///g' | \
+    fzf --preview 'bat --color always {}')
+
+  if [[ $# == 1 ]]; then
+    if [[ $1 == -c ]]; then
+      cat $gist | xclip -sel clip
+      echo "'$gist' copied to clipboard"
+    fi
+  else
+    $EDITOR $gist
+  fi
+  cd - > /dev/null
+}
+
+function pd() {
+  local dirname
+  dirname=$1
+  echo $dirname
+  ls -1 $dirname | fzf --preview 'bat --color always $dirname/{}'
+}
 
 ######################
 #       DOTENV FILES #
@@ -76,6 +114,8 @@ alias shutdown-after-update="sudo pacman -Syu && shutdown now"
 export PATH=$PATH:$HOME/.local/bin
 # gem
 export PATH=$PATH:$HOME/.gem/ruby/2.7.0/bin
+# asdf
+. /opt/asdf-vm/lib/asdf.sh
 
 ######################
 #            SYSTEMD #
