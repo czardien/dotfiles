@@ -129,7 +129,7 @@ set t_Co=256
 set cursorline
 
 " Set colorscheme!
-colorscheme onehalflight
+colorscheme onehalfdark
 
 " Set lightline colorscheme!
 let g:lightline = { 'colorscheme': 'onehalfdark' }

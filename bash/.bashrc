@@ -22,19 +22,25 @@ export EDITOR=vim
 #                    #
 ######################
 
-NOTES_HOME=$HOME/.notes
-
 alias aur='cd /home/adrien/.aur/'
 alias vimrc='vim /home/adrien/.dotfiles/vim/.vimrc'
 alias bashrc='vim /home/adrien/.dotfiles/bash/.bashrc'
 alias dotfiles='cd /home/adrien/.dotfiles/'
 alias systemd-unit-files='cd /home/adrien/.systemd-unit-files/'
 
+######################
+#         EXCALIDRAW #
+#                    #
+######################
+
+alias draw="docker stop excalidraw >/dev/null 2>&1 && docker run --rm -dit --name excalidraw -p 5000:80 excalidraw/excalidraw:latest >/dev/null 2>&1 && firefox http://localhost:5000"
 
 ######################
 #              NOTES #
 #                    #
 ######################
+
+NOTES_HOME=$HOME/.notes
 
 function notes() {
   local note
@@ -461,9 +467,27 @@ function daymode () {
 }
 
 ######################
-#              UTILS #
+#        EXPERIMENTS #
 #                    #
 ######################
+
+alias clip="xclip -sel clip"
+
+function dirmark() {
+  DIRMARK=$(pwd)
+}
+
+function cdmark(){
+  [[ -z $DIRMARK ]] || cd $DIRMARK
+}
+
+function fdd() {
+  find . -type d -name "*$1*"
+}
+
+function fdf() {
+  find . -type f -name "*$1*"
+}
 
 function previewdir() {
   local dirname
