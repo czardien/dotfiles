@@ -41,6 +41,7 @@ alias draw="docker stop excalidraw >/dev/null 2>&1 && docker run --rm -dit --nam
 ######################
 
 NOTES_HOME=$HOME/.notes
+alias notes='cd $NOTES_HOME'
 
 function notes() {
   local note
@@ -200,7 +201,13 @@ alias preview="fzf --preview 'bat --color always {}'"
 [ -f /usr/share/fzf/key-bindings.bash ] && source /usr/share/fzf/key-bindings.bash || echo -e "Warning: /usr/share/fzf/key-bindings.bash not found"
 [ -f /usr/share/fzf/completion.bash ] && source /usr/share/fzf/completion.bash || echo -e "Warning: /usr/share/fzf/completion.bash not found"
 
-# Setting preview git logs with fzf
+######################
+#             SINGER #
+#                    #
+######################
+
+[ -f ~/.local/usr/share/bash-completion/singer ] && source ~/.local/usr/share/bash-completion/singer 2>/dev/null
+
 ######################
 #                X11 #
 #                    #
@@ -331,17 +338,17 @@ alias l4a="exa $EXA_OPTIONS -L 4 -a"
 alias l5a="exa $EXA_OPTIONS -L 5 -a"
 
 # Watch current working directory with exa
-alias wcwd="watch -n 0.1 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 1'"
-alias wcwd2="watch -n 0.1 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 2'"
-alias wcwd3="watch -n 0.1 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 3'"
-alias wcwd4="watch -n 0.1 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 4'"
-alias wcwd5="watch -n 0.1 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 5'"
+alias wcwd="watch -n 0.1 -t -d --color 'exa $EXA_OPTIONS -L 1'"
+alias wcwd2="watch -n 0.1 -t -d --color 'exa $EXA_OPTIONS -L 2'"
+alias wcwd3="watch -n 0.1 -t -d --color 'exa $EXA_OPTIONS -L 3'"
+alias wcwd4="watch -n 0.1 -t -d --color 'exa $EXA_OPTIONS -L 4'"
+alias wcwd5="watch -n 0.1 -t -d --color 'exa $EXA_OPTIONS -L 5'"
 
-alias wcwda="watch -n 0.1 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 1 -a'"
-alias wcwd2a="watch -n 0.1 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 2 -a'"
-alias wcwd3a="watch -n 0.1 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 3 -a'"
-alias wcwd4a="watch -n 0.1 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 4 -a'"
-alias wcwd5a="watch -n 0.1 -t -d --color 'echo $(basename $(pwd)) && exa $EXA_OPTIONS -L 5 -a'"
+alias wcwda="watch -n 0.1 -t -d --color 'exa $EXA_OPTIONS -L 1 -a'"
+alias wcwd2a="watch -n 0.1 -t -d --color 'exa $EXA_OPTIONS -L 2 -a'"
+alias wcwd3a="watch -n 0.1 -t -d --color 'exa $EXA_OPTIONS -L 3 -a'"
+alias wcwd4a="watch -n 0.1 -t -d --color 'exa $EXA_OPTIONS -L 4 -a'"
+alias wcwd5a="watch -n 0.1 -t -d --color 'exa $EXA_OPTIONS -L 5 -a'"
 
 ######################
 #             PYTHON #

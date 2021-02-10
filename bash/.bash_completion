@@ -19,3 +19,11 @@ source /home/adrien/.local/share/cheat/complete.bash
 
 complete -C aws_completer aws-prod
 complete -C aws_completer aws-non-prod
+
+##########
+#    AWS #
+#        #
+##########
+
+complete -C aws_completer aws-prod
+complete -C aws_completer aws-non-prod
