@@ -11,6 +11,20 @@
 #
 
 ######################
+#          CZARD ORG #
+#                    #
+######################
+
+[[ -f ~/.bashrc.czard ]] && source ~/.bashrc.czard
+
+######################
+#        MINDGYM ORG #
+#                    #
+######################
+
+[[ -f ~/.bashrc.mg ]] && source ~/.bashrc.mg
+
+######################
 #             EDITOR #
 #                    #
 ######################
@@ -42,6 +56,14 @@ alias draw="docker stop excalidraw >/dev/null 2>&1 && docker run --rm -dit --nam
 
 NOTES_HOME=$HOME/.notes
 alias notes='cd $NOTES_HOME'
+
+install_instance() {
+  install -C -v -m 0755 -d ./ops/
+  install -C -v -m 0644 $NOTES_HOME/templates/instance/Makefile .
+  install -C -v -m 0644 -T $NOTES_HOME/templates/instance/env.sample ./.env.sample
+  install -C -v -m 0755 $NOTES_HOME/templates/instance/ops/deploy.sh ./ops/
+  install -C -v -m 0644 $NOTES_HOME/templates/instance/ops/install* ./ops/
+}
 
 function notes() {
   local note
@@ -99,10 +121,15 @@ function gist() {
 #                    #
 ######################
 
-function load_dotenv() {
-  if [[ -f "./.env" ]]
-  then
+dotenv_load() {
+  if [[ -f "./.env" ]]; then
     set -o allexport; source "./.env"; set +o allexport
+  fi
+}
+
+dotenv_sample() {
+  if [[ -f "./.env" ]]; then
+    sed -E 's/^([0-9A-Za-z_]*=)(.*)$/\1/g' ./.env > ./.env.sample
   fi
 }
 
@@ -177,6 +204,8 @@ function __pyvenv_ps1 () {
 
 set_bash_prompt(){
     PS1="$(__pyvenv_ps1)\[\033[1;35m\]\h\[\033[m\] \[\033[1;37m\]❯\[\033[m\] \[\033[1;36m\]\w\[\033[m\] \[\033[1;37m\]❯\[\033[m\]$(__git_ps1)$(__suffix_ps1)"
+    # With history and command number, but I don't find it very useful
+    #PS1="$(__pyvenv_ps1)\[\033[1;35m\]\h\[\033[m\] \[\033[1;37m\]❯\[\033[m\] \[\033[1;36m\]\w\[\033[m\] \[\033[1;37m\]❯\[\033[m\]$(__git_ps1) \[\033[1;92m\](\!)\[\033[m\]\[\033[1;93m\](\#)\[\033[m\]$(__suffix_ps1)"
 }
 
 PROMPT_COMMAND=set_bash_prompt
@@ -206,7 +235,7 @@ alias preview="fzf --preview 'bat --color always {}'"
 #                    #
 ######################
 
-[ -f ~/.local/usr/share/bash-completion/singer ] && source ~/.local/usr/share/bash-completion/singer 2>/dev/null
+[ -f ~/.local/usr/share/bash-completion/singer ] && source ~/.local/usr/share/bash-completion/singer
 
 ######################
 #                X11 #
@@ -261,7 +290,7 @@ alias gs="git status"
 alias gp="git pull"
 alias gd="git diff"
 alias gl="git log"
-alias glog="git log --oneline | fzf --multi --preview 'git show {+1}'"
+alias glog="git log --oneline -20 | fzf --multi --preview 'git show {+1}'"
 alias glog20="git log --oneline -20"
 
 # Making git super cool
